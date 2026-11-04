@@ -1,0 +1,1059 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="author" content="Mehmet Karadeniz, 2026-2027">
+<title>Öğretmen Dosyası 2026-2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: a ring-binder file on a desk; A4 pages lie side by side and turn horizontally, one page centered at a time. */
+:root {
+  --desk: #c9d0d9;
+  --paper: #fdfdfb;
+  --ink: #1c2430;
+  --muted: #5e6877;
+  --rule: #d8dde4;
+  --navy: #1f3a5f;
+  --crimson: #b1222d;
+  --tint: #eef2f7;
+  --slot: #f6f8fb;
+  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --sans: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --desk: #11161d; --paper: #1d242e; --ink: #e4e8ee; --muted: #9aa5b4; --rule: #33404f;
+    --navy: #8fb3e0; --crimson: #ef7a82; --tint: #253040; --slot: #222b37; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --desk: #11161d; --paper: #1d242e; --ink: #e4e8ee; --muted: #9aa5b4; --rule: #33404f;
+  --navy: #8fb3e0; --crimson: #ef7a82; --tint: #253040; --slot: #222b37; color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { height: 100%; overflow: hidden; margin: 0; }
+img { max-width: 100%; }
+body { background: var(--desk); color: var(--ink); font-family: var(--serif); }
+
+.book {
+  position: relative; height: 100%; display: flex; align-items: center; gap: 28px;
+  overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; scroll-behavior: smooth;
+  padding-block: 14px 58px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  scrollbar-width: none;
+}
+.book::-webkit-scrollbar { display: none; }
+.book::before, .book::after { content: ""; flex: 0 0 calc(50vw - 40px); }
+@media (prefers-reduced-motion: reduce) { .book { scroll-behavior: auto; } }
+
+.page {
+  flex: 0 0 auto; scroll-snap-align: center;
+  height: min(100%, calc((100vw - 32px) * 1.414));
+  aspect-ratio: 210 / 297; max-width: 100%;
+  background: var(--paper); border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.12), 0 8px 24px rgba(20,30,45,.18);
+  position: relative; display: flex; flex-direction: column;
+  padding: 7% 8% 5% 10%;
+  font-size: clamp(9.5px, 1.65vh, 14.5px); line-height: 1.5;
+}
+/* binder holes on the left edge */
+.page::before {
+  content: ""; position: absolute; left: 3.2%; top: 30%; width: 2.2%; aspect-ratio: 1;
+  border-radius: 50%; background: var(--desk); box-shadow: 0 calc(var(--hole-gap, 0px)) 0 var(--desk);
+}
+.page .holes { position: absolute; left: 3.2%; top: 0; bottom: 0; width: 2.2%; pointer-events: none; }
+.page .holes i { position: absolute; left: 0; width: 100%; aspect-ratio: 1; border-radius: 50%; background: var(--desk);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.25); }
+.page .holes i:nth-child(1) { top: 28%; } .page .holes i:nth-child(2) { top: 68%; }
+.page::before { display: none; }
+
+.body { flex: 1; min-height: 0; overflow-y: auto; padding-right: 2px; }
+.pfoot {
+  display: flex; justify-content: space-between; gap: 8px; padding-top: 2.4%;
+  border-top: 1px solid var(--rule); font-family: var(--sans); font-size: .72em; color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.eyebrow { font-family: var(--sans); font-size: .72em; letter-spacing: .12em; text-transform: uppercase; color: var(--crimson); font-weight: 600; margin: 0 0 .4em; }
+h2 { font-size: 1.45em; line-height: 1.2; margin: 0 0 .7em; color: var(--navy); text-wrap: balance; font-weight: 700; }
+h3 { font-family: var(--sans); font-size: .9em; font-weight: 600; margin: 1.2em 0 .45em; color: var(--ink); }
+p { margin: 0 0 .7em; }
+ul, ol { margin: 0 0 .8em; padding-left: 1.3em; }
+li { margin-bottom: .25em; }
+.small { font-size: .85em; color: var(--muted); }
+
+.tbl { overflow-x: auto; margin: .3em 0 .9em; }
+table { width: 100%; border-collapse: collapse; font-family: var(--sans); font-size: .78em; }
+th, td { border: 1px solid var(--rule); padding: .45em .55em; text-align: left; vertical-align: top; }
+th { background: var(--tint); font-weight: 600; }
+td.blank { height: 2.1em; }
+
+/* cover */
+.cover { justify-content: center; text-align: center; }
+.cover .body { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: .6em; }
+.cover .school { font-family: var(--sans); font-size: .85em; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.cover .title { font-size: 2.6em; font-weight: 700; color: var(--navy); line-height: 1.05; margin: .4em 0 .1em; }
+.cover .year { font-family: var(--sans); font-weight: 600; color: var(--crimson); letter-spacing: .08em; }
+.cover .rule { width: 30%; height: 2px; background: var(--crimson); margin: 1.2em 0; }
+.cover dl { display: grid; grid-template-columns: auto auto; gap: .35em 1em; text-align: left; font-size: .95em; margin: 0; }
+.cover dt { font-family: var(--sans); font-size: .8em; color: var(--muted); align-self: center; }
+.cover dd { margin: 0; }
+
+/* section divider */
+.divider .body { display: flex; flex-direction: column; justify-content: center; }
+.divider .num { font-family: var(--sans); font-size: 4.2em; font-weight: 600; color: var(--crimson); line-height: 1; }
+.divider h2 { font-size: 2em; margin-top: .3em; }
+.divider ul { list-style: none; padding: 0; font-family: var(--sans); font-size: .9em; color: var(--muted); }
+.divider li { padding: .35em 0; border-bottom: 1px solid var(--rule); }
+
+/* TOC */
+.toc { list-style: none; padding: 0; margin: 0; font-family: var(--sans); }
+.toc li { margin: 0; }
+.toc a { display: flex; gap: .5em; align-items: baseline; padding: .22em 0; color: var(--ink); text-decoration: none; font-size: .86em; }
+.toc a .dots { flex: 1; border-bottom: 1px dotted var(--muted); transform: translateY(-.25em); opacity: .6; }
+.toc a .pn { font-variant-numeric: tabular-nums; color: var(--muted); }
+.toc li.l1 a { font-weight: 600; color: var(--navy); margin-top: .55em; font-size: .92em; }
+.toc li.l2 a { padding-left: 1.1em; }
+.toc a:hover .t, .toc a:focus-visible .t { color: var(--crimson); text-decoration: underline; }
+
+/* poems */
+.mars { columns: 2; column-gap: 2em; font-size: .86em; line-height: 1.42; }
+.mars p { break-inside: avoid; margin-bottom: .8em; }
+.hitabe { font-size: .9em; text-align: justify; hyphens: auto; }
+.sign { text-align: right; font-style: italic; color: var(--muted); }
+@media (max-width: 520px) { .mars { columns: 1; } }
+
+.ilkeler { columns: 2; column-gap: 1.6em; font-family: var(--sans); font-size: .82em; }
+.note { border-left: 3px solid var(--crimson); background: var(--tint); padding: .5em .8em; font-family: var(--sans); font-size: .76em; color: var(--muted); margin: .6em 0; }
+
+/* document slots */
+.slot { border: 1px dashed var(--rule); background: var(--slot); border-radius: 4px; padding: .6em .75em; margin: .5em 0 .8em; font-family: var(--sans); font-size: .78em; }
+.slot-h { display: flex; justify-content: space-between; align-items: center; gap: .5em; font-weight: 600; color: var(--navy); }
+.slot-list { list-style: none; padding: 0; margin: .4em 0 0; display: grid; gap: .3em; }
+.slot-list li { display: flex; align-items: center; gap: .5em; margin: 0; background: var(--paper); border: 1px solid var(--rule); border-radius: 3px; padding: .35em .5em; }
+.slot-list a { color: var(--navy); font-weight: 500; flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.slot-list .kind { font-size: .82em; color: var(--muted); }
+.slot-empty { color: var(--muted); margin: .35em 0 0; }
+.slot form { display: grid; grid-template-columns: 1fr 1fr auto; gap: .35em; margin-top: .45em; }
+@media (max-width: 520px) { .slot form { grid-template-columns: 1fr; } }
+.slot input { font: inherit; padding: .4em .5em; border: 1px solid var(--rule); border-radius: 3px; background: var(--paper); color: var(--ink); min-width: 0; }
+.slot .msg { color: var(--crimson); margin: .3em 0 0; }
+button { font: inherit; font-family: var(--sans); cursor: pointer; }
+.btn { border: 1px solid var(--navy); background: var(--navy); color: var(--paper); border-radius: 3px; padding: .4em .8em; font-weight: 500; }
+.btn-ghost { border: 1px solid var(--rule); background: transparent; color: var(--muted); border-radius: 3px; padding: .15em .5em; font-size: .9em; }
+.btn-ghost.confirm { border-color: var(--crimson); color: var(--crimson); }
+.add-toggle { border: 0; background: transparent; color: var(--crimson); font-weight: 600; padding: 0; font-size: 1em; }
+:focus-visible { outline: 2px solid var(--crimson); outline-offset: 2px; }
+
+/* bottom bar */
+.bar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 5;
+  display: flex; justify-content: center; align-items: center; gap: 10px;
+  padding-block: 8px calc(8px + env(safe-area-inset-bottom, 0px));
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  font-family: var(--sans); font-size: 13px; color: var(--ink);
+}
+.bar button { border: 1px solid var(--rule); background: var(--paper); color: var(--ink); border-radius: 999px; height: 34px; padding: 0 14px; box-shadow: 0 1px 3px rgba(0,0,0,.12); }
+.bar button:disabled { opacity: .4; cursor: default; }
+@media (max-width: 520px) { .bar .wide { display: none; } }
+.bar .count { min-width: 66px; text-align: center; font-variant-numeric: tabular-nums; background: var(--paper); border-radius: 999px; padding: 7px 12px; box-shadow: 0 1px 3px rgba(0,0,0,.12); }
+
+/* ---------- desktop: closed ring binder, one sheet at a time ---------- */
+.file { display: contents; }
+.board, .rings, .tabs, .stack { display: none; }
+@media (min-width: 900px) {
+  :root { --board: #1f3a5f; --board-edge: #152a46; --ring: #b9c1cc; --ring-hi: #eef1f5; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --board: #22344d; --board-edge: #0f1b2b; --ring: #8a939f; --ring-hi: #c9d0d8; } }
+  :root[data-theme="dark"] { --board: #22344d; --board-edge: #0f1b2b; --ring: #8a939f; --ring-hi: #c9d0d8; }
+  .file {
+    display: block; position: fixed; z-index: 1;
+    top: calc(22px + env(safe-area-inset-top, 0px)); bottom: 64px; left: 50%;
+    aspect-ratio: 210 / 297; transform: translateX(-50%); max-width: calc(100vw - 200px);
+  }
+  .board {
+    display: block; position: absolute; inset: -14px -18px -14px -64px; border-radius: 6px 12px 12px 6px;
+    background:
+      linear-gradient(90deg, var(--board-edge) 0, var(--board-edge) 34px, rgba(255,255,255,.08) 35px, transparent 37px),
+      var(--board);
+    box-shadow: 0 2px 4px rgba(0,0,0,.25), 0 22px 50px rgba(10,20,35,.35);
+  }
+  .board::after {
+    content: "Öğretmen Dosyası · 2026-2027"; position: absolute; left: 0; top: 0; bottom: 0; width: 34px;
+    writing-mode: vertical-rl; transform: rotate(180deg); text-align: center;
+    font-family: var(--sans); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.55);
+  }
+  .book {
+    position: absolute; inset: 0; display: block; overflow: visible; padding: 0;
+    scroll-snap-type: none; perspective: 4000px;
+  }
+  .book::before, .book::after { display: none; }
+  .page {
+    position: absolute; inset: 0; width: 100%; height: 100%; max-width: none;
+    visibility: hidden; transform-origin: left center; backface-visibility: hidden;
+    box-shadow: none; font-size: clamp(10px, 1.62vh, 15px);
+  }
+  .page.on { visibility: visible; z-index: 3; }
+  .page.under { visibility: visible; z-index: 2; }
+  /* the stack of sheets beneath the current one */
+  .stack {
+    display: block; position: absolute; inset: 0; z-index: 1; background: var(--paper); border-radius: 2px;
+    box-shadow: 2px 2px 0 -0.5px var(--paper), 2px 2px 0 0 var(--rule), 4px 4px 0 -0.5px var(--paper), 4px 4px 0 0 var(--rule),
+      6px 6px 0 -0.5px var(--paper), 6px 6px 0 0 var(--rule), 0 1px 3px rgba(0,0,0,.2);
+  }
+  .page.turn-out { visibility: visible; z-index: 4; animation: turnOut .55s cubic-bezier(.45,.05,.4,1) forwards; }
+  .page.turn-in { visibility: visible; z-index: 4; animation: turnIn .55s cubic-bezier(.45,.05,.4,1) forwards; }
+  @keyframes turnOut { from { transform: rotateY(0); } to { transform: rotateY(-90deg); opacity: .6; } }
+  @keyframes turnIn { from { transform: rotateY(-90deg); opacity: .6; } to { transform: rotateY(0); opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) { .page.turn-out, .page.turn-in { animation-duration: 1ms; } }
+
+  .rings { display: block; position: absolute; inset: 0; z-index: 6; pointer-events: none; }
+  .rings i {
+    position: absolute; left: -46px; width: calc(46px + 5.5%); height: 14px; margin-top: -7px; border-radius: 999px;
+    background: linear-gradient(180deg, var(--ring-hi), var(--ring) 45%, #7d8794 100%);
+    box-shadow: 0 2px 3px rgba(0,0,0,.35);
+  }
+  .rings i:nth-child(1) { top: calc(28% + 1.1% ); } .rings i:nth-child(2) { top: calc(68% + 1.1%); }
+
+  .tabs { display: flex; flex-direction: column; gap: 6px; position: absolute; left: calc(100% + 2px); top: 7%; z-index: 0; }
+  .tabs button {
+    writing-mode: vertical-rl; border: 0; border-radius: 0 6px 6px 0; padding: 14px 7px; width: 34px;
+    font-family: var(--sans); font-size: 11.5px; font-weight: 600; letter-spacing: .04em; text-align: center;
+    color: #fff; background: var(--tab); opacity: .78; transform: translateX(-8px); transition: transform .2s, opacity .2s;
+    box-shadow: 2px 1px 3px rgba(0,0,0,.2);
+  }
+  .tabs button:hover { opacity: 1; transform: translateX(-4px); }
+  .tabs button.active { opacity: 1; transform: translateX(0); }
+  .tabs button b { font-size: 13px; margin-bottom: 4px; }
+  .bar { z-index: 8; }
+}
+
+/* full-sheet images */
+.sheet-img { margin: 0 0 .6em; }
+.sheet-img img { display: block; width: 100%; height: auto; border: 1px solid var(--rule); max-width: 100%; }
+
+
+/* portrait page */
+.portrait-page .body { display: flex; flex-direction: column; align-items: center; }
+.portrait-page .eyebrow { align-self: flex-start; }
+.frame {
+  width: min(72%, 40vh); aspect-ratio: 600 / 913; margin: 4% 0 3%; padding: 3.2%;
+  background: linear-gradient(135deg, #9c7a3c, #d9bd7a 30%, #8a6a30 55%, #caa95f 80%, #7a5c28);
+  box-shadow: 0 6px 18px rgba(0,0,0,.28), inset 0 0 0 1px rgba(0,0,0,.25);
+  position: relative;
+}
+.frame::before { content: ""; position: absolute; inset: 3.2%; box-shadow: inset 0 0 0 6px var(--paper), inset 0 2px 6px 6px rgba(0,0,0,.18); pointer-events: none; z-index: 1; }
+.frame img { width: 100%; height: 100%; object-fit: cover; display: block; max-width: 100%; }
+.frame-empty { width: 100%; height: 100%; background: var(--tint); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .8em; text-align: center; padding: 8%; font-family: var(--sans); font-size: .82em; color: var(--muted); }
+.frame-empty p { margin: 0; }
+.caption { text-align: center; font-size: 1.15em; font-weight: 600; color: var(--navy); margin: 0; }
+.caption span { font-family: var(--sans); font-size: .7em; font-weight: 500; color: var(--muted); letter-spacing: .1em; }
+.portre-tools { margin-top: 1em; font-family: var(--sans); font-size: .8em; }
+.vh { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; pointer-events: none; }
+.frame.drop { outline: 3px dashed var(--crimson); outline-offset: 4px; }
+.modal { position: fixed; inset: 0; z-index: 20; background: rgba(10,16,24,.55); display: flex; align-items: center; justify-content: center; padding: 16px; }
+.modal form { background: var(--paper); color: var(--ink); border-radius: 8px; padding: 22px; width: min(340px, 100%); display: grid; gap: 10px; font-family: var(--sans); box-shadow: 0 20px 50px rgba(0,0,0,.35); }
+.modal h3 { margin: 0 0 4px; font-size: 16px; }
+.modal input { font: inherit; padding: 9px 10px; border: 1px solid var(--rule); border-radius: 4px; background: var(--paper); color: var(--ink); }
+.modal .row { display: flex; gap: 8px; justify-content: flex-end; }
+.modal .err { color: var(--crimson); font-size: 13px; margin: 0; }
+.img-tools { margin-top: .6em; font-family: var(--sans); font-size: .8em; display: flex; gap: .5em; align-items: center; }
+.img-tools .status { color: var(--muted); }
+</style>
+
+</head>
+<body>
+<div class="file">
+<div class="board"></div>
+<div class="book" id="book">
+<div class="stack" aria-hidden="true"></div>
+
+<!-- KAPAK -->
+<section class="page cover" id="kapak" data-title="Kapak">
+  <div class="body">
+    <div class="school">Karahüyük Ali Akkanat Ortaokulu</div>
+    <div class="title">Öğretmen<br>Dosyası</div>
+    <div class="year">2026-2027 Eğitim-Öğretim Yılı</div>
+    <div class="rule"></div>
+    <dl>
+      <dt>Öğretmen</dt><dd>Mehmet Karadeniz</dd>
+      <dt>Branş</dt><dd>Bilişim Teknolojileri ve Yazılım</dd>
+      <dt>Dersler</dt><dd>5. ve 6. sınıf Bilişim Teknolojileri ve Yazılım<br>7. sınıf Yapay Zekâ Uygulamaları (seçmeli)</dd>
+    </dl>
+  </div>
+</section>
+
+<!-- İÇİNDEKİLER -->
+<section class="page" id="icindekiler" data-title="İçindekiler">
+  <div class="body">
+    <p class="eyebrow">Dosya düzeni</p>
+    <h2>İçindekiler</h2>
+    <ol class="toc" id="toc"></ol>
+  </div>
+</section>
+
+<!-- ============ BÖLÜM 1 ============ -->
+<section class="page divider" id="bolum-1" data-title="Kişisel ve Resmî Evraklar" data-toc="1">
+  <div class="body">
+    <div class="num">1</div>
+    <h2>Kişisel ve Resmî Evraklar</h2>
+    <ul>
+      <li>İstiklâl Marşı</li>
+      <li>Atatürk portresi</li>
+      <li>Atatürk'ün Gençliğe Hitabesi</li>
+      <li>Türk Millî Eğitiminin Genel Amaçları ve Temel İlkeleri</li>
+      <li>Öğretmen görev, yetki ve sorumlulukları</li>
+      <li>Hizmet içi eğitim belgeleri ve sertifikalar</li>
+    </ul>
+  </div>
+</section>
+
+<section class="page" id="istiklal-marsi" data-title="İstiklâl Marşı" data-toc="2">
+  <div class="body">
+    <p class="eyebrow">Bölüm 1 · Resmî evrak</p>
+    <h2>İstiklâl Marşı</h2>
+    <div class="mars">
+      <p>Korkma, sönmez bu şafaklarda yüzen al sancak;<br>Sönmeden yurdumun üstünde tüten en son ocak.<br>O benim milletimin yıldızıdır, parlayacak;<br>O benimdir, o benim milletimindir ancak.</p>
+      <p>Çatma, kurban olayım, çehreni ey nazlı hilâl!<br>Kahraman ırkıma bir gül! Ne bu şiddet, bu celâl?<br>Sana olmaz dökülen kanlarımız sonra helâl...<br>Hakkıdır, Hakk'a tapan milletimin istiklâl!</p>
+      <p>Ben ezelden beridir hür yaşadım, hür yaşarım.<br>Hangi çılgın bana zincir vuracakmış? Şaşarım!<br>Kükremiş sel gibiyim, bendimi çiğner, aşarım.<br>Yırtarım dağları, enginlere sığmam, taşarım.</p>
+      <p>Garbın âfâkını sarmışsa çelik zırhlı duvar,<br>Benim iman dolu göğsüm gibi serhaddim var.<br>Ulusun, korkma! Nasıl böyle bir imanı boğar,<br>"Medeniyet!" dediğin tek dişi kalmış canavar?</p>
+      <p>Arkadaş! Yurduma alçakları uğratma, sakın.<br>Siper et gövdeni, dursun bu hayâsızca akın.<br>Doğacaktır sana va'dettiği günler Hakk'ın...<br>Kim bilir, belki yarın, belki yarından da yakın.</p>
+      <p>Bastığın yerleri "toprak!" diyerek geçme, tanı:<br>Düşün altındaki binlerce kefensiz yatanı.<br>Sen şehîd oğlusun, incitme, yazıktır, atanı:<br>Verme, dünyâları alsan da, bu cennet vatanı.</p>
+      <p>Kim bu cennet vatanın uğruna olmaz ki fedâ?<br>Şühedâ fışkıracak toprağı sıksan, şühedâ!<br>Cânı, cânânı, bütün varımı alsın da Hudâ,<br>Etmesin tek vatanımdan beni dünyâda cüdâ.</p>
+      <p>Ruhumun senden İlâhî, şudur ancak emeli:<br>Değmesin mabedimin göğsüne nâmahrem eli.<br>Bu ezanlar -ki şehadetleri dinin temeli-<br>Ebedî yurdumun üstünde benim inlemeli.</p>
+      <p>O zaman vecd ile bin secde eder -varsa- taşım,<br>Her cerîhamdan, İlâhî, boşanıp kanlı yaşım,<br>Fışkırır ruh-ı mücerred gibi yerden na'şım;<br>O zaman yükselerek arşa değer belki başım.</p>
+      <p>Dalgalan sen de şafaklar gibi ey şanlı hilâl!<br>Olsun artık dökülen kanlarımın hepsi helâl.<br>Ebediyyen sana yok, ırkıma yok izmihlâl;<br>Hakkıdır hür yaşamış bayrağımın hürriyet;<br>Hakkıdır, Hakk'a tapan milletimin istiklâl!</p>
+    </div>
+    <p class="sign">Mehmet Âkif Ersoy</p>
+  </div>
+</section>
+
+<section class="page portrait-page" id="ataturk-portresi" data-title="Atatürk Portresi" data-toc="2">
+  <div class="body">
+    <p class="eyebrow">Bölüm 1 · Resmî evrak</p>
+    <div class="frame" data-img="portre" data-default="gorseller/ataturk.jpg" data-max="1200">
+      <img alt="Mustafa Kemal Atatürk portresi" hidden>
+      <div class="frame-empty"><p class="img-msg">Portre yükleniyor…</p></div>
+    </div>
+    <p class="caption">Mustafa Kemal Atatürk<br><span>1881 – 1938</span></p>
+  </div>
+</section>
+
+<section class="page" id="genclige-hitabe" data-title="Gençliğe Hitabe" data-toc="2">
+  <div class="body">
+    <p class="eyebrow">Bölüm 1 · Resmî evrak</p>
+    <h2>Atatürk'ün Gençliğe Hitabesi</h2>
+    <div class="hitabe">
+      <p>Ey Türk gençliği! Birinci vazifen, Türk istiklâlini, Türk Cumhuriyetini, ilelebet muhafaza ve müdafaa etmektir.</p>
+      <p>Mevcudiyetinin ve istikbalinin yegâne temeli budur. Bu temel, senin en kıymetli hazinendir. İstikbalde dahi, seni bu hazineden mahrum etmek isteyecek dahilî ve haricî bedhahların olacaktır. Bir gün, istiklâl ve cumhuriyeti müdafaa mecburiyetine düşersen, vazifeye atılmak için, içinde bulunacağın vaziyetin imkân ve şeraitini düşünmeyeceksin! Bu imkân ve şerait, çok namüsait bir mahiyette tezahür edebilir. İstiklâl ve cumhuriyetine kastedecek düşmanlar, bütün dünyada emsali görülmemiş bir galibiyetin mümessili olabilirler. Cebren ve hile ile aziz vatanın bütün kaleleri zapt edilmiş, bütün tersanelerine girilmiş, bütün orduları dağıtılmış ve memleketin her köşesi bilfiil işgal edilmiş olabilir. Bütün bu şeraitten daha elîm ve daha vahim olmak üzere, memleketin dahilinde iktidara sahip olanlar gaflet ve dalâlet ve hattâ hıyanet içinde bulunabilirler. Hattâ bu iktidar sahipleri şahsî menfaatlerini, müstevlilerin siyasî emelleriyle tevhit edebilirler. Millet, fakr u zaruret içinde harap ve bîtap düşmüş olabilir.</p>
+      <p>Ey Türk istikbalinin evlâdı! İşte, bu ahval ve şerait içinde dahi vazifen, Türk istiklâl ve cumhuriyetini kurtarmaktır! Muhtaç olduğun kudret, damarlarındaki asil kanda mevcuttur!</p>
+    </div>
+    <p class="sign">Mustafa Kemal Atatürk, 20 Ekim 1927</p>
+  </div>
+</section>
+
+<section class="page" id="milli-egitim-amaclari" data-title="Millî Eğitimin Genel Amaçları ve Temel İlkeleri" data-toc="2">
+  <div class="body">
+    <p class="eyebrow">Bölüm 1 · 1739 sayılı Millî Eğitim Temel Kanunu</p>
+    <h2>Türk Millî Eğitiminin Genel Amaçları</h2>
+    <p class="small">Türk Millî Eğitiminin genel amacı, Türk Milletinin bütün fertlerini:</p>
+    <ol style="font-size:.86em">
+      <li>Atatürk inkılap ve ilkelerine ve Anayasada ifadesini bulan Atatürk milliyetçiliğine bağlı; Türk Milletinin millî, ahlâkî, insanî, manevî ve kültürel değerlerini benimseyen, koruyan ve geliştiren; ailesini, vatanını, milletini seven ve daima yüceltmeye çalışan; insan haklarına ve Anayasanın başlangıcındaki temel ilkelere dayanan demokratik, laik ve sosyal bir hukuk Devleti olan Türkiye Cumhuriyetine karşı görev ve sorumluluklarını bilen ve bunları davranış hâline getirmiş yurttaşlar olarak yetiştirmek;</li>
+      <li>Beden, zihin, ahlâk, ruh ve duygu bakımlarından dengeli ve sağlıklı şekilde gelişmiş bir kişiliğe ve karaktere, hür ve bilimsel düşünme gücüne, geniş bir dünya görüşüne sahip, insan haklarına saygılı, kişilik ve teşebbüse değer veren, topluma karşı sorumluluk duyan; yapıcı, yaratıcı ve verimli kişiler olarak yetiştirmek;</li>
+      <li>İlgi, istidat ve kabiliyetlerini geliştirerek gerekli bilgi, beceri, davranışlar ve birlikte iş görme alışkanlığı kazandırmak suretiyle hayata hazırlamak ve onların, kendilerini mutlu kılacak ve toplumun da mutluluğuna katkıda bulunacak bir meslek sahibi olmalarını sağlamaktır.</li>
+    </ol>
+    <h3>Temel İlkeler (md. 4-17)</h3>
+    <ol class="ilkeler">
+      <li>Genellik ve eşitlik</li><li>Ferdin ve toplumun ihtiyaçları</li><li>Yöneltme</li><li>Eğitim hakkı</li>
+      <li>Fırsat ve imkân eşitliği</li><li>Süreklilik</li><li>Atatürk inkılap ve ilkeleri ve Atatürk milliyetçiliği</li>
+      <li>Demokrasi eğitimi</li><li>Laiklik</li><li>Bilimsellik</li><li>Planlılık</li><li>Karma eğitim</li>
+      <li>Okul ile ailenin işbirliği</li><li>Her yerde eğitim</li>
+    </ol>
+    <p class="note">Metin 1739 sayılı Kanunun 2. maddesinden aktarılmıştır. Dosyaya koymadan önce mevzuat.gov.tr'deki güncel metinle karşılaştırın.</p>
+  </div>
+</section>
+
+<section class="page" id="ogretmen-gorevleri" data-title="Öğretmen Görev, Yetki ve Sorumlulukları" data-toc="2">
+  <div class="body">
+    <p class="eyebrow">Bölüm 1 · Mevzuat</p>
+    <h2>Öğretmen Görev, Yetki ve Sorumlulukları</h2>
+    <h3>Öğretim</h3>
+    <ul>
+      <li>Derslerini öğretim programına ve onaylı yıllık plana uygun olarak yürütür.</li>
+      <li>Ders araç-gereçlerini ve bilişim sınıfını kullanıma hazır tutar.</li>
+      <li>Ölçme ve değerlendirme sonuçlarını süresi içinde e-Okul'a işler.</li>
+    </ul>
+    <h3>Kurullar ve okul görevleri</h3>
+    <ul>
+      <li>Zümre, şube öğretmenler kurulu ve öğretmenler kurulu toplantılarına katılır.</li>
+      <li>Nöbet çizelgesindeki görevleri yerine getirir.</li>
+      <li>Danışmanı olduğu sosyal kulübün çalışmalarını planlar ve yürütür.</li>
+    </ul>
+    <h3>Rehberlik ve aile</h3>
+    <ul>
+      <li>Rehberlik servisiyle iş birliği yapar, gözlemlerini paylaşır.</li>
+      <li>Veli görüşmelerini kayıt altına alır.</li>
+    </ul>
+    <p class="note">Yönetmeliğin ilgili maddelerini (MEB Okul Öncesi Eğitim ve İlköğretim Kurumları Yönetmeliği) aşağıya Drive bağlantısı olarak ekleyin.</p>
+    <div class="slot" data-slot="mevzuat" data-label="Yönetmelik maddeleri"></div>
+  </div>
+</section>
+
+<section class="page" id="hizmet-ici" data-title="Hizmet İçi Eğitim Belgeleri" data-toc="2">
+  <div class="body">
+    <p class="eyebrow">Bölüm 1 · Kişisel evrak</p>
+    <h2>Hizmet İçi Eğitim Belgeleri ve Sertifikalar</h2>
+    <div class="tbl"><table>
+      <tr><th>Tarih</th><th>Eğitimin adı</th><th>Düzenleyen</th><th>Süre (saat)</th></tr>
+      <tr><td class="blank"></td><td></td><td></td><td></td></tr>
+      <tr><td class="blank"></td><td></td><td></td><td></td></tr>
+      <tr><td class="blank"></td><td></td><td></td><td></td></tr>
+      <tr><td class="blank"></td><td></td><td></td><td></td></tr>
+    </table></div>
+    <div class="slot" data-slot="sertifikalar" data-label="Sertifikalar"></div>
+  </div>
+</section>
+
+<!-- ============ BÖLÜM 2 ============ -->
+<section class="page divider" id="bolum-2" data-title="Planlar ve Programlar" data-toc="1">
+  <div class="body">
+    <div class="num">2</div>
+    <h2>Planlar ve Programlar</h2>
+    <ul>
+      <li>Eğitim-öğretim yılı çalışma takvimi</li>
+      <li>Haftalık ders programı ve nöbet çizelgesi</li>
+      <li>Yıllık planlar (5, 6 ve 7. sınıf)</li>
+      <li>Ders planları</li>
+    </ul>
+  </div>
+</section>
+
+<section class="page" id="calisma-takvimi" data-title="Çalışma Takvimi" data-toc="2">
+  <div class="body">
+    <p class="eyebrow">Bölüm 2 · MEB ve İl/İlçe MEM onaylı</p>
+    <h2>2026-2027 Eğitim-Öğretim Yılı Çalışma Takvimi</h2>
+    <figure class="sheet-img" data-img="calisma-takvimi" data-default="gorseller/calisma-takvimi.jpg" data-max="1600"><img alt="2026-2027 eğitim-öğretim yılı çalışma takvimi" hidden><figcaption class="small img-msg">Görsel yükleniyor…</figcaption></figure>
+    <div class="slot" data-slot="calisma-takvimi" data-label="Onaylı çalışma takvimi"></div>
+  </div>
+</section>
+
+<section class="page" id="ders-programi" data-title="Haftalık Ders Programı ve Nöbet Çizelgesi" data-toc="2">
+  <div class="body">
+    <p class="eyebrow">Bölüm 2 · Program</p>
+    <h2>Haftalık Ders Programı</h2>
+    <div class="tbl"><table>
+      <tr><th>Saat</th><th>Pzt</th><th>Salı</th><th>Çrş</th><th>Prş</th><th>Cuma</th></tr>
+      <tr><td>1</td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>2</td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>3</td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>4</td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>5</td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>6</td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>7</td><td></td><td></td><td></td><td></td><td></td></tr>
+    </table></div>
+    <h3>Nöbet</h3>
+    <div class="tbl"><table>
+      <tr><th>Gün</th><th>Nöbet yeri</th><th>Dönem</th></tr>
+      <tr><td class="blank"></td><td></td><td></td></tr>
+    </table></div>
+    <div class="slot" data-slot="ders-programi" data-label="Ders programı ve nöbet çizelgesi"></div>
+  </div>
+</section>
+
+<section class="page" id="yillik-plan-5" data-title="Yıllık Plan: 5. Sınıf Bilişim" data-toc="2">
+  <div class="body">
+    <p class="eyebrow">Bölüm 2 · Yıllık plan · Okul müdürü onaylı</p>
+    <h2>5. Sınıf Bilişim Teknolojileri ve Yazılım</h2>
+    <div class="tbl"><table>
+      <tr><th>Hafta</th><th>Ünite / konu</th><th>Kazanım (özet)</th></tr>
+      <tr><td>1-3</td><td>Bilgisayar ve donanım</td><td>Bilgisayarın temel birimlerini tanır</td></tr>
+      <tr><td>4-6</td><td>Dosya ve klasör yönetimi</td><td>Dosya ve klasör işlemlerini yapar</td></tr>
+      <tr><td>7-9</td><td>Metin ve sunum hazırlama</td><td>Basit belge ve sunum oluşturur</td></tr>
+      <tr><td>10-12</td><td>Görsel programlama (Scratch)</td><td>Sahne, karakter ve olay bloklarını kullanır</td></tr>
+      <tr><td>13-14</td><td>Ara değerlendirme</td><td>İlk üç ünitenin kazanımları</td></tr>
+      <tr><td>15-17</td><td>Güvenli internet</td><td>Kişisel veri ve dijital davranış farkındalığı</td></tr>
+      <tr><td>18-20</td><td>Proje çalışması</td><td>Küçük bir Scratch projesi tamamlar</td></tr>
+      <tr><td>21-24</td><td>Yıl sonu tekrar</td><td>Yılın kazanımlarını gözden geçirir</td></tr>
+    </table></div>
+    <div class="slot" data-slot="yillik-plan-5" data-label="Onaylı yıllık plan (5. sınıf)"></div>
+  </div>
+</section>
+
+<section class="page" id="yillik-plan-6" data-title="Yıllık Plan: 6. Sınıf Bilişim" data-toc="2">
+  <div class="body">
+    <p class="eyebrow">Bölüm 2 · Yıllık plan · Okul müdürü onaylı</p>
+    <h2>6. Sınıf Bilişim Teknolojileri ve Yazılım</h2>
+    <div class="tbl"><table>
+      <tr><th>Hafta</th><th>Ünite / konu</th><th>Kazanım (özet)</th></tr>
+      <tr><td>1-2</td><td>Bilişim teknolojileri ve toplum</td><td>Teknolojinin olumlu ve olumsuz etkilerini tartışır</td></tr>
+      <tr><td>3-5</td><td>Temel bilgisayar kullanımı</td><td>Dosya ve klasör yönetimi yapar</td></tr>
+      <tr><td>6-8</td><td>Algoritma ve akış şeması</td><td>Problemi adımlara ayırır, akış şeması çizer</td></tr>
+      <tr><td>9-11</td><td>Scratch ile programlama</td><td>Döngü ve koşul kullanarak proje yapar</td></tr>
+      <tr><td>12-13</td><td>Ara değerlendirme</td><td>İlk üç ünitenin kazanımları</td></tr>
+      <tr><td>14-16</td><td>Güvenli internet ve dijital vatandaşlık</td><td>Kişisel veri ve siber zorbalık farkındalığı</td></tr>
+      <tr><td>17-19</td><td>Dijital içerik üretimi</td><td>Sunum ve infografik hazırlar</td></tr>
+      <tr><td>20-22</td><td>Proje geliştirme</td><td>Grupla küçük bir proje tamamlar</td></tr>
+      <tr><td>23-24</td><td>Yıl sonu değerlendirme</td><td>Performans görevi</td></tr>
+    </table></div>
+    <div class="slot" data-slot="yillik-plan-6" data-label="Onaylı yıllık plan (6. sınıf)"></div>
+  </div>
+</section>
+
+<section class="page" id="yillik-plan-7" data-title="Yıllık Plan: 7. Sınıf Yapay Zekâ" data-toc="2">
+  <div class="body">
+    <p class="eyebrow">Bölüm 2 · Yıllık plan · Seçmeli ders</p>
+    <h2>7. Sınıf Yapay Zekâ Uygulamaları</h2>
+    <div class="tbl"><table>
+      <tr><th>Hafta</th><th>Ünite / konu</th><th>Kazanım (özet)</th></tr>
+      <tr><td>1-2</td><td>Yapay zekâya giriş</td><td>Yapay zekânın tanımını ve kullanım alanlarını açıklar</td></tr>
+      <tr><td>3-4</td><td>Makine öğrenmesi temelleri</td><td>Veri, örüntü ve öğrenme kavramlarını açıklar</td></tr>
+      <tr><td>5-7</td><td>Metin ve görsel üreten yapay zekâ</td><td>Araçları etik kurallara uyarak kullanır</td></tr>
+      <tr><td>8-10</td><td>Basit yapay zekâ uygulaması</td><td>Blok tabanlı araçla sınıflandırma örneği yapar</td></tr>
+      <tr><td>11-12</td><td>Etik ve sorumlu kullanım</td><td>Yanlılık, mahremiyet ve doğrulamayı tartışır</td></tr>
+      <tr><td>13-16</td><td>Proje çalışması</td><td>Grupla yapay zekâ destekli bir proje sunar</td></tr>
+    </table></div>
+    <p class="note">5, 6 ve 7. sınıf tabloları taslaktır. Kazanım kodlarını güncel MEB öğretim programından alıp onaylı planı ekleyin.</p>
+    <div class="slot" data-slot="yillik-plan-7" data-label="Onaylı yıllık plan (7. sınıf)"></div>
+  </div>
+</section>
+
+<section class="page" id="ders-planlari" data-title="Ders Planları" data-toc="2">
+  <div class="body">
+    <p class="eyebrow">Bölüm 2 · Günlük plan</p>
+    <h2>Ders Planı Şablonu</h2>
+    <div class="tbl"><table>
+      <tr><th style="width:32%">Ders / sınıf</th><td></td></tr>
+      <tr><th>Tarih / süre</th><td>40 dk</td></tr>
+      <tr><th>Ünite / konu</th><td></td></tr>
+      <tr><th>Kazanım</th><td></td></tr>
+      <tr><th>Araç-gereç</th><td>Bilgisayar, projeksiyon, föy</td></tr>
+      <tr><th>Giriş (5 dk)</th><td>Önceki dersi hatırlatan soru</td></tr>
+      <tr><th>Gelişme (25 dk)</th><td>Anlatım ve uygulama</td></tr>
+      <tr><th>Sonuç (5 dk)</th><td>Çıkış bileti (2 soru)</td></tr>
+      <tr><th>Ölçme-değerlendirme</th><td></td></tr>
+    </table></div>
+    <div class="slot" data-slot="ders-planlari" data-label="Ders planları"></div>
+  </div>
+</section>
+
+<!-- ============ BÖLÜM 3 ============ -->
+<section class="page divider" id="bolum-3" data-title="Kurul ve Toplantı Tutanakları" data-toc="1">
+  <div class="body">
+    <div class="num">3</div>
+    <h2>Kurul ve Toplantı Tutanakları</h2>
+    <ul>
+      <li>Zümre öğretmenler kurulu tutanakları</li>
+      <li>Şube öğretmenler kurulu (ŞÖK) tutanakları</li>
+      <li>Ortak sınav ve analiz tutanakları</li>
+    </ul>
+  </div>
+</section>
+
+<section class="page" id="zumre" data-title="Zümre Toplantı Tutanakları" data-toc="2">
+  <div class="body">
+    <p class="eyebrow">Bölüm 3 · Tutanak</p>
+    <h2>Zümre Öğretmenler Kurulu Tutanakları</h2>
+    <div class="slot" data-slot="zumre-sene-basi" data-label="Sene başı zümre"></div>
+    <div class="slot" data-slot="zumre-donem-ortasi" data-label="Dönem ortası zümre"></div>
+    <div class="slot" data-slot="zumre-sene-sonu" data-label="Sene sonu zümre"></div>
+  </div>
+</section>
+
+<section class="page" id="sok" data-title="Şube Öğretmenler Kurulu Tutanakları" data-toc="2">
+  <div class="body">
+    <p class="eyebrow">Bölüm 3 · Tutanak</p>
+    <h2>Şube Öğretmenler Kurulu (ŞÖK)</h2>
+    <p class="small">Sorumlu olunan sınıflar için.</p>
+    <div class="tbl"><table>
+      <tr><th>Şube</th><th>Toplantı tarihi</th><th>Gündem özeti</th></tr>
+      <tr><td class="blank"></td><td></td><td></td></tr>
+      <tr><td class="blank"></td><td></td><td></td></tr>
+      <tr><td class="blank"></td><td></td><td></td></tr>
+    </table></div>
+    <div class="slot" data-slot="sok" data-label="ŞÖK tutanakları"></div>
+  </div>
+</section>
+
+<section class="page" id="ortak-sinav" data-title="Ortak Sınav ve Analiz Tutanakları" data-toc="2">
+  <div class="body">
+    <p class="eyebrow">Bölüm 3 · Tutanak</p>
+    <h2>Okul Ortak Sınavları ve Analiz Tutanakları</h2>
+    <div class="tbl"><table>
+      <tr><th>Sınav</th><th>Sınıf</th><th>Tarih</th><th>Ortalama</th></tr>
+      <tr><td>1. dönem 1. sınav</td><td></td><td></td><td></td></tr>
+      <tr><td>1. dönem 2. sınav</td><td></td><td></td><td></td></tr>
+      <tr><td>2. dönem 1. sınav</td><td></td><td></td><td></td></tr>
+      <tr><td>2. dönem 2. sınav</td><td></td><td></td><td></td></tr>
+    </table></div>
+    <div class="slot" data-slot="ortak-sinav" data-label="Ortak sınav tutanakları"></div>
+  </div>
+</section>
+
+<!-- ============ BÖLÜM 4 ============ -->
+<section class="page divider" id="bolum-4" data-title="Öğrenci Takip ve Değerlendirme" data-toc="1">
+  <div class="body">
+    <div class="num">4</div>
+    <h2>Öğrenci Takip ve Değerlendirme Evrakları</h2>
+    <ul>
+      <li>Sınıf listeleri</li>
+      <li>Sosyal kulüp listesi ve çalışma planı</li>
+      <li>Performans ve proje ölçekleri</li>
+      <li>Yazılı sınav örnekleri ve analizleri</li>
+      <li>Rehberlik planı ve veli görüşme formları</li>
+    </ul>
+  </div>
+</section>
+
+<section class="page" id="sinif-listeleri" data-title="Sınıf Listeleri" data-toc="2">
+  <div class="body">
+    <p class="eyebrow">Bölüm 4 · e-Okul uyumlu</p>
+    <h2>Öğrenci Sınıf Listeleri</h2>
+    <p class="small">e-Okul'dan alınan listeleri her sınıf için ayrı ekleyin.</p>
+    <div class="slot" data-slot="liste-5" data-label="5. sınıf şubeleri"></div>
+    <div class="slot" data-slot="liste-6" data-label="6. sınıf şubeleri"></div>
+    <div class="slot" data-slot="liste-7" data-label="7. sınıf Yapay Zekâ grubu"></div>
+  </div>
+</section>
+
+<section class="page" id="sosyal-kulup" data-title="Sosyal Kulüp" data-toc="2">
+  <div class="body">
+    <p class="eyebrow">Bölüm 4 · Danışman öğretmen</p>
+    <h2>Sosyal Kulüp Öğrenci Listesi ve Çalışma Planı</h2>
+    <div class="tbl"><table>
+      <tr><th style="width:32%">Kulübün adı</th><td></td></tr>
+      <tr><th>Öğrenci sayısı</th><td></td></tr>
+      <tr><th>Toplantı günü</th><td></td></tr>
+    </table></div>
+    <div class="slot" data-slot="kulup-liste" data-label="Kulüp öğrenci listesi"></div>
+    <div class="slot" data-slot="kulup-plan" data-label="Kulüp yıllık çalışma planı"></div>
+  </div>
+</section>
+
+<section class="page" id="olcekler" data-title="Performans ve Proje Ölçekleri" data-toc="2">
+  <div class="body">
+    <p class="eyebrow">Bölüm 4 · Dereceli puanlama anahtarı</p>
+    <h2>Performans ve Proje Görevi Değerlendirme Ölçeği</h2>
+    <div class="tbl"><table>
+      <tr><th>Ölçüt</th><th>4 Çok iyi</th><th>3 İyi</th><th>2 Orta</th><th>1 Geliştirilmeli</th></tr>
+      <tr><th>İçerik</th><td>Konu eksiksiz ve doğru</td><td>Küçük eksikler var</td><td>Önemli eksikler var</td><td>Konu işlenmemiş</td></tr>
+      <tr><th>Teknik doğruluk</th><td>Program/ürün hatasız çalışır</td><td>Küçük hatalar var</td><td>Kısmen çalışır</td><td>Çalışmaz</td></tr>
+      <tr><th>Özgünlük</th><td>Kendi fikrini geliştirmiş</td><td>Örneği değiştirmiş</td><td>Örneğe yakın</td><td>Kopya</td></tr>
+      <tr><th>Sunum</th><td>Açık ve düzenli anlatır</td><td>Anlaşılır anlatır</td><td>Desteğe ihtiyaç duyar</td><td>Sunum yapmaz</td></tr>
+      <tr><th>Zaman</th><td>Zamanında teslim</td><td>1 gün gecikme</td><td>2-3 gün gecikme</td><td>Teslim etmez</td></tr>
+    </table></div>
+    <p class="small">Toplam 20 puan. Not: toplam puan × 5.</p>
+    <div class="slot" data-slot="olcekler" data-label="Ölçek ve kriter belgeleri"></div>
+  </div>
+</section>
+
+<section class="page" id="yazili-sinavlar" data-title="Yazılı Sınav Örnekleri ve Analizleri" data-toc="2">
+  <div class="body">
+    <p class="eyebrow">Bölüm 4 · Sınav evrakı</p>
+    <h2>Yazılı Sınav Analiz Formu</h2>
+    <div class="tbl"><table>
+      <tr><th>Soru</th><th>Kazanım</th><th>Puan</th><th>Doğru cevaplayan</th><th>Başarı %</th></tr>
+      <tr><td>1</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>2</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>3</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>4</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>5</td><td></td><td></td><td></td><td></td></tr>
+    </table></div>
+    <p class="small">Başarısı %50'nin altında kalan kazanımlar için telafi etkinliği planlanır.</p>
+    <div class="slot" data-slot="sinav-ornekleri" data-label="Sınav kâğıdı örnekleri"></div>
+    <div class="slot" data-slot="cevap-anahtarlari" data-label="Cevap anahtarları"></div>
+  </div>
+</section>
+
+<section class="page" id="rehberlik" data-title="Rehberlik Planı ve Veli Görüşmeleri" data-toc="2">
+  <div class="body">
+    <p class="eyebrow">Bölüm 4 · Rehberlik</p>
+    <h2>Rehberlik Çalışma Planı ve Veli Görüşme Formu</h2>
+    <div class="slot" data-slot="rehberlik-plani" data-label="Rehberlik dönemlik/yıllık planı"></div>
+    <h3>Veli görüşme formu</h3>
+    <div class="tbl"><table>
+      <tr><th style="width:32%">Öğrenci / sınıf</th><td></td></tr>
+      <tr><th>Veli adı</th><td></td></tr>
+      <tr><th>Görüşme tarihi ve şekli</th><td></td></tr>
+      <tr><th>Görüşme nedeni</th><td></td></tr>
+      <tr><th>Konuşulanlar</th><td class="blank"></td></tr>
+      <tr><th>Alınan kararlar</th><td class="blank"></td></tr>
+      <tr><th>İmzalar</th><td>Öğretmen: &nbsp;&nbsp;&nbsp;&nbsp; Veli:</td></tr>
+    </table></div>
+    <div class="slot" data-slot="veli-gorusmeleri" data-label="Doldurulmuş görüşme formları"></div>
+  </div>
+</section>
+
+</div>
+<div class="rings" aria-hidden="true"><i></i><i></i></div>
+<nav class="tabs" id="tabs" aria-label="Bölüm sekmeleri">
+  <button type="button" data-go="icindekiler" style="--tab:#5e6877">İçindekiler</button>
+  <button type="button" data-go="bolum-1" style="--tab:#b1222d"><b>1</b>Evraklar</button>
+  <button type="button" data-go="bolum-2" style="--tab:#2f6b4f"><b>2</b>Planlar</button>
+  <button type="button" data-go="bolum-3" style="--tab:#b0742a"><b>3</b>Tutanaklar</button>
+  <button type="button" data-go="bolum-4" style="--tab:#5a4b8c"><b>4</b>Öğrenci</button>
+</nav>
+</div>
+
+<nav class="bar" aria-label="Sayfa çevirme">
+  <button id="prev" aria-label="Önceki sayfa">‹<span class="wide"> Önceki</span></button>
+  <button id="tocBtn">İçindekiler</button>
+  <button id="authBtn">Giriş</button>
+  <span class="count" id="count">1 / 1</span>
+  <button id="next" aria-label="Sonraki sayfa"><span class="wide">Sonraki </span>›</button>
+</nav>
+
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script>
+(() => {
+  const book = document.getElementById('book');
+  const pages = [...book.querySelectorAll('.page')];
+  const total = pages.length;
+
+  // holes + footers + page numbers
+  pages.forEach((p, i) => {
+    const holes = document.createElement('div');
+    holes.className = 'holes';
+    holes.innerHTML = '<i></i><i></i>';
+    p.prepend(holes);
+    if (i === 0) return;
+    const f = document.createElement('div');
+    f.className = 'pfoot';
+    f.innerHTML = '<span>Mehmet Karadeniz, 2026-2027</span><span>' + (i + 1) + '</span>';
+    p.appendChild(f);
+  });
+
+  // table of contents
+  const toc = document.getElementById('toc');
+  pages.forEach((p, i) => {
+    const lvl = p.dataset.toc;
+    if (!lvl) return;
+    const li = document.createElement('li');
+    li.className = 'l' + lvl;
+    const a = document.createElement('a');
+    a.href = '#' + p.id;
+    a.innerHTML = '<span class="t"></span><span class="dots"></span><span class="pn">' + (i + 1) + '</span>';
+    a.querySelector('.t').textContent = p.dataset.title;
+    li.appendChild(a);
+    toc.appendChild(li);
+  });
+
+  // navigation
+  const prev = document.getElementById('prev');
+  const next = document.getElementById('next');
+  const count = document.getElementById('count');
+  let current = 0;
+
+  const desk = window.matchMedia('(min-width: 900px)');
+  const tabs = [...document.querySelectorAll('#tabs button')];
+  const tabIdx = tabs.map(b => pages.findIndex(p => p.id === b.dataset.go));
+  let busy = false;
+
+  const flip = (i, animate) => {
+    const from = pages[current];
+    const to = pages[i];
+    pages.forEach(p => p.classList.remove('on', 'under', 'turn-out', 'turn-in'));
+    if (!animate || from === to) { to.classList.add('on'); return; }
+    busy = true;
+    if (i > current) { to.classList.add('under'); from.classList.add('turn-out'); }
+    else { from.classList.add('under'); to.classList.add('turn-in'); }
+    setTimeout(() => {
+      pages.forEach(p => p.classList.remove('on', 'under', 'turn-out', 'turn-in'));
+      to.classList.add('on'); busy = false;
+    }, 560);
+  };
+
+  const goTo = (i, smooth = true) => {
+    i = Math.max(0, Math.min(total - 1, i));
+    if (desk.matches) {
+      if (busy) return;
+      flip(i, smooth);
+    } else {
+      pages[i].scrollIntoView({ inline: 'center', block: 'nearest', behavior: smooth ? 'smooth' : 'instant' });
+    }
+    setCurrent(i);
+  };
+  tabs.forEach((b, k) => b.addEventListener('click', () => goTo(tabIdx[k])));
+  desk.addEventListener('change', () => { pages.forEach(p => p.classList.remove('on')); pages[current].classList.add('on'); goTo(current, false); });
+  const setCurrent = (i) => {
+    current = i;
+    let sec = -1;
+    tabIdx.forEach((ti, k) => { if (ti <= i && ti > -1) sec = k; });
+    tabs.forEach((b, k) => b.classList.toggle('active', k === sec));
+    count.textContent = (i + 1) + ' / ' + total;
+    prev.disabled = i === 0;
+    next.disabled = i === total - 1;
+  };
+  const nearest = () => {
+    const br = book.getBoundingClientRect();
+    const c = br.left + br.width / 2;
+    let best = 0, d = Infinity;
+    pages.forEach((p, i) => {
+      const r = p.getBoundingClientRect();
+      const dd = Math.abs(r.left + r.width / 2 - c);
+      if (dd < d) { d = dd; best = i; }
+    });
+    return best;
+  };
+  let t;
+  book.addEventListener('scroll', () => { if (desk.matches) return; clearTimeout(t); t = setTimeout(() => setCurrent(nearest()), 80); }, { passive: true });
+
+  prev.addEventListener('click', () => goTo(current - 1));
+  next.addEventListener('click', () => goTo(current + 1));
+  document.getElementById('tocBtn').addEventListener('click', () => goTo(1));
+  document.addEventListener('keydown', (e) => {
+    if (e.target.closest('input')) return;
+    if (e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); goTo(current + 1); }
+    if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); goTo(current - 1); }
+    if (e.key === 'Home') goTo(0);
+    if (e.key === 'End') goTo(total - 1);
+  });
+  // vertical wheel turns pages on desktop
+  let wheelLock = false;
+  book.addEventListener('wheel', (e) => {
+    if (e.target.closest('.body') && e.target.closest('.body').scrollHeight > e.target.closest('.body').clientHeight + 2) return;
+    if (Math.abs(e.deltaY) < Math.abs(e.deltaX) || wheelLock) return;
+    e.preventDefault();
+    wheelLock = true; setTimeout(() => wheelLock = false, 450);
+    goTo(current + (e.deltaY > 0 ? 1 : -1));
+  }, { passive: false });
+
+  book.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+    const i = pages.findIndex(p => '#' + p.id === a.getAttribute('href'));
+    if (i < 0) return;
+    e.preventDefault();
+    goTo(i);
+  });
+
+  const fromHash = () => {
+    const i = pages.findIndex(p => '#' + p.id === location.hash);
+    if (i >= 0) goTo(i, false);
+  };
+  window.addEventListener('hashchange', fromHash);
+  window.addEventListener('resize', () => goTo(current, false));
+  setCurrent(0);
+  requestAnimationFrame(() => { fromHash(); if (!location.hash) goTo(0, false); });
+
+  // ================= Firebase =================
+  const OWNER = 'i4jvgGhne2a5LLyZpvTlVZnraGJ3';
+  if (!window.firebase) {
+    // Firebase yüklenemedi (ör. okul ağı engeli): sayfalar ve varsayılan görseller yine görünür.
+    document.querySelectorAll('[data-img]').forEach(el => {
+      const img = el.querySelector('img'), msg = el.querySelector('.img-msg'), empty = el.querySelector('.frame-empty');
+      if (el.dataset.default) { img.src = el.dataset.default; img.hidden = false; if (empty) empty.hidden = true; if (msg) msg.hidden = true; }
+    });
+    document.querySelectorAll('.slot').forEach(sl => { sl.innerHTML = '<div class="slot-h"><span></span></div><p class="slot-empty">Belgeler şu an yüklenemedi. İnternet bağlantınızı kontrol edin.</p>'; sl.querySelector('span').textContent = sl.dataset.label; });
+    document.getElementById('authBtn').hidden = true;
+    return;
+  }
+  firebase.initializeApp({
+    apiKey: "AIzaSyDhCmyXm9abc3i3rNo6EevfsTvn3PJfmuo",
+    authDomain: "ogretmendosyam.firebaseapp.com",
+    projectId: "ogretmendosyam",
+    storageBucket: "ogretmendosyam.firebasestorage.app",
+    messagingSenderId: "258102592847",
+    appId: "1:258102592847:web:0cd887add873457e8d713a"
+  });
+  const db = firebase.firestore();
+  const auth = firebase.auth();
+  let canWrite = false;
+
+  // ---------- giriş ----------
+  const authBtn = document.getElementById('authBtn');
+  const openLogin = () => {
+    const m = document.createElement('div');
+    m.className = 'modal';
+    m.innerHTML = '<form><h3>Öğretmen girişi</h3>' +
+      '<input id="lgMail" type="email" placeholder="E-posta" autocomplete="username" required>' +
+      '<input id="lgPass" type="password" placeholder="Şifre" autocomplete="current-password" required>' +
+      '<p class="err" hidden></p><div class="row"><button type="button" class="btn-ghost" data-x>Vazgeç</button><button class="btn" type="submit">Giriş yap</button></div></form>';
+    document.body.appendChild(m);
+    const f = m.querySelector('form'), err = m.querySelector('.err');
+    m.querySelector('[data-x]').onclick = () => m.remove();
+    m.addEventListener('click', (e) => { if (e.target === m) m.remove(); });
+    f.querySelector('#lgMail').focus();
+    f.addEventListener('submit', async (e) => {
+      e.preventDefault(); err.hidden = true;
+      try { await auth.signInWithEmailAndPassword(f.lgMail.value.trim(), f.lgPass.value); m.remove(); }
+      catch (x) { err.textContent = 'Giriş yapılamadı. E-posta ya da şifre hatalı.'; err.hidden = false; }
+    });
+  };
+  authBtn.addEventListener('click', () => { auth.currentUser ? auth.signOut() : openLogin(); });
+  auth.onAuthStateChanged((u) => {
+    canWrite = !!u && u.uid === OWNER;
+    authBtn.textContent = u ? 'Çıkış' : 'Giriş';
+    render(); renderImgTools();
+  });
+
+  // ---------- belge alanları ----------
+  const slots = [...document.querySelectorAll('.slot')];
+  let docs = [];
+  let state = 'loading';
+  const driveKind = (url) => {
+    if (/docs\.google\.com\/document/.test(url)) return 'Doküman';
+    if (/docs\.google\.com\/spreadsheets/.test(url)) return 'Tablo';
+    if (/docs\.google\.com\/presentation/.test(url)) return 'Sunu';
+    if (/drive\.google\.com\/drive\/folders/.test(url)) return 'Klasör';
+    if (/drive\.google\.com/.test(url)) return 'Drive dosyası';
+    return 'Bağlantı';
+  };
+  const render = () => {
+    slots.forEach(slot => {
+      const key = slot.dataset.slot;
+      const items = docs.filter(d => d.slot === key).sort((a, b) => (a.t || 0) - (b.t || 0));
+      slot.innerHTML = '';
+      const h = document.createElement('div');
+      h.className = 'slot-h';
+      const label = document.createElement('span');
+      label.textContent = slot.dataset.label;
+      h.appendChild(label);
+      if (canWrite) {
+        const add = document.createElement('button');
+        add.className = 'add-toggle'; add.type = 'button'; add.textContent = '+ Belge ekle';
+        add.addEventListener('click', () => { const f = slot.querySelector('form'); f.hidden = !f.hidden; if (!f.hidden) f.url.focus(); });
+        h.appendChild(add);
+      }
+      slot.appendChild(h);
+      if (items.length) {
+        const ul = document.createElement('ul');
+        ul.className = 'slot-list';
+        items.forEach(d => {
+          const li = document.createElement('li');
+          const a = document.createElement('a');
+          a.href = d.url; a.target = '_blank'; a.rel = 'noopener';
+          a.textContent = d.ad || d.url;
+          const k = document.createElement('span');
+          k.className = 'kind'; k.textContent = driveKind(d.url);
+          li.append(a, k);
+          if (canWrite) {
+            const del = document.createElement('button');
+            del.type = 'button'; del.className = 'btn-ghost'; del.textContent = 'Kaldır';
+            del.addEventListener('click', async () => {
+              if (!del.classList.contains('confirm')) {
+                del.classList.add('confirm'); del.textContent = 'Emin misiniz?';
+                setTimeout(() => { del.classList.remove('confirm'); del.textContent = 'Kaldır'; }, 3000);
+                return;
+              }
+              del.disabled = true;
+              try { await db.collection('belgeler').doc(d.id).delete(); }
+              catch (x) { del.disabled = false; del.textContent = 'Kaldırılamadı'; }
+            });
+            li.appendChild(del);
+          }
+          ul.appendChild(li);
+        });
+        slot.appendChild(ul);
+      } else {
+        const p = document.createElement('p');
+        p.className = 'slot-empty';
+        p.textContent = state === 'loading' ? 'Belgeler yükleniyor…'
+          : state === 'offline' ? 'Belgeler şu an yüklenemedi. İnternet bağlantınızı kontrol edin.'
+          : 'Henüz belge eklenmedi.' + (canWrite ? ' Drive\'da dosyayı açın, "Bağlantıyı kopyala" deyin ve buraya yapıştırın.' : '');
+        slot.appendChild(p);
+      }
+      if (canWrite) {
+        const f = document.createElement('form');
+        f.hidden = true;
+        const uid = 'f-' + key;
+        f.innerHTML =
+          '<input id="' + uid + '-url" name="url" type="url" placeholder="Drive bağlantısı" required aria-label="Drive bağlantısı">' +
+          '<input id="' + uid + '-ad" name="ad" type="text" placeholder="Belge adı (isteğe bağlı)" aria-label="Belge adı">' +
+          '<button class="btn" type="submit">Ekle</button>';
+        const msg = document.createElement('p');
+        msg.className = 'msg'; msg.hidden = true;
+        f.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const url = f.url.value.trim();
+          if (!/^https:\/\//.test(url)) { msg.textContent = 'Bağlantı https:// ile başlamalı.'; msg.hidden = false; return; }
+          const btn = f.querySelector('button'); btn.disabled = true; msg.hidden = true;
+          try { await db.collection('belgeler').add({ slot: key, url, ad: f.ad.value.trim() || slot.dataset.label, t: Date.now() }); }
+          catch (x) { btn.disabled = false; msg.textContent = 'Belge kaydedilemedi, tekrar deneyin.'; msg.hidden = false; }
+        });
+        slot.append(f, msg);
+      }
+    });
+  };
+  render();
+  const slowTimer = setTimeout(() => { if (state === 'loading') { state = 'offline'; render(); } }, 10000);
+  db.collection('belgeler').onSnapshot((snap) => {
+    docs = snap.docs.map(s => ({ id: s.id, ...s.data() }));
+    clearTimeout(slowTimer); state = 'ready'; render();
+  }, () => { clearTimeout(slowTimer); state = 'offline'; render(); });
+
+  // ---------- görseller (Firestore'da küçültülmüş JPEG) ----------
+  const shrink = async (file, maxDim, limit = 850000) => {
+    const bmp = await createImageBitmap(file);
+    let max = maxDim, q = 0.85, out = '';
+    for (let i = 0; i < 6; i++) {
+      const r = Math.min(1, max / Math.max(bmp.width, bmp.height));
+      const c = document.createElement('canvas');
+      c.width = Math.round(bmp.width * r); c.height = Math.round(bmp.height * r);
+      const g = c.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, c.width, c.height);
+      g.drawImage(bmp, 0, 0, c.width, c.height);
+      out = c.toDataURL('image/jpeg', q);
+      if (out.length < limit) return out;
+      max *= 0.85; q -= 0.07;
+    }
+    throw new Error('Görsel çok büyük');
+  };
+  const picker = document.createElement('input');
+  picker.type = 'file'; picker.accept = 'image/*'; picker.className = 'vh'; picker.tabIndex = -1;
+  document.body.appendChild(picker);
+  let pickFor = null;
+  const imgBoxes = [...document.querySelectorAll('[data-img]')].map(el => {
+    const box = { el, key: el.dataset.img, img: el.querySelector('img'), msg: el.querySelector('.img-msg'),
+      empty: el.querySelector('.frame-empty'), max: +el.dataset.max || 1400, def: el.dataset.default };
+    const tools = document.createElement('div');
+    tools.className = 'img-tools'; tools.hidden = true;
+    tools.innerHTML = '<button type="button" class="btn-ghost">Görseli değiştir</button><span class="status"></span>';
+    tools.querySelector('button').addEventListener('click', () => { pickFor = box; picker.click(); });
+    el.insertAdjacentElement('afterend', tools);
+    box.tools = tools; box.status = tools.querySelector('.status');
+    const show = (src) => {
+      box.img.onerror = () => { box.img.hidden = true; if (box.empty) box.empty.hidden = false; box.msg.hidden = false; box.msg.textContent = 'Görsel henüz eklenmedi.'; };
+      box.img.src = src; box.img.hidden = false; if (box.empty) box.empty.hidden = true; box.msg.hidden = true;
+    };
+    if (box.def) show(box.def);
+    db.collection('gorseller').doc(box.key).onSnapshot((s) => {
+      const v = s.exists ? s.data() : null;
+      if (v && v.src) show(v.src);
+      else if (!box.def) { box.msg.textContent = 'Görsel henüz eklenmedi.'; }
+    }, () => {});
+    el.addEventListener('dragover', (e) => { if (!canWrite) return; e.preventDefault(); el.classList.add('drop'); });
+    el.addEventListener('dragleave', () => el.classList.remove('drop'));
+    el.addEventListener('drop', (e) => {
+      el.classList.remove('drop'); if (!canWrite) return; e.preventDefault();
+      const f = [...(e.dataTransfer.files || [])].find(x => x.type.startsWith('image/'));
+      if (f) upload(box, f);
+    });
+    return box;
+  });
+  const upload = async (box, file) => {
+    box.status.textContent = 'Yükleniyor…';
+    try {
+      const src = await shrink(file, box.max);
+      await db.collection('gorseller').doc(box.key).set({ src, t: Date.now() });
+      box.status.textContent = 'Kaydedildi';
+      setTimeout(() => { box.status.textContent = ''; }, 2500);
+    } catch (x) { box.status.textContent = 'Yüklenemedi, daha küçük bir resim deneyin.'; }
+  };
+  picker.addEventListener('change', () => { const f = picker.files[0]; if (f && pickFor) upload(pickFor, f); picker.value = ''; });
+  document.addEventListener('paste', (e) => {
+    if (!canWrite) return;
+    const box = imgBoxes.find(b => pages[current].contains(b.el));
+    const item = box && [...(e.clipboardData && e.clipboardData.items || [])].find(x => x.type.startsWith('image/'));
+    if (!item) return;
+    e.preventDefault(); upload(box, item.getAsFile());
+  });
+  const renderImgTools = () => imgBoxes.forEach(b => { b.tools.hidden = !canWrite; });
+})();
+</script>
+</body>
+</html>
