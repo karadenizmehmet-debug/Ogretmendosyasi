@@ -66,17 +66,17 @@ button { font: inherit; cursor: pointer; }
   background: var(--paper); color: var(--text);
   box-shadow: 0 1px 2px rgba(0,0,0,.12), 0 8px 24px rgba(20,30,45,.18);
   position: relative; overflow: hidden;
-  font-size: clamp(8.5px, 1.6vh, 15px); line-height: 1.45;
+  line-height: 1.45;
   container-type: size;
 }
 .deco { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 .body {
-  position: absolute; inset: 7% 9% 6% 11%; overflow-y: auto; overflow-x: hidden;
-  display: flex; flex-direction: column; scrollbar-width: thin;
+  position: absolute; inset: 7% 10% 7.5% 12%; overflow: hidden;
+  display: flex; flex-direction: column; font-size: 2.3cqw;
 }
 .pfoot {
-  position: absolute; left: 11%; right: 9%; bottom: 2.4%; display: flex; justify-content: space-between;
-  font-size: .68em; color: var(--muted); letter-spacing: .04em; font-variant-numeric: tabular-nums;
+  position: absolute; left: 12%; right: 10%; bottom: 3.6%; display: flex; justify-content: space-between;
+  font-size: 1.55cqw; color: var(--muted); letter-spacing: .04em; font-variant-numeric: tabular-nums;
 }
 .holes { position: absolute; left: 3.4%; top: 0; bottom: 0; width: 2.2%; pointer-events: none; z-index: 2; }
 .holes i { position: absolute; left: 0; width: 100%; aspect-ratio: 1; border-radius: 50%; background: var(--desk); box-shadow: inset 0 1px 2px rgba(0,0,0,.3); }
@@ -112,10 +112,10 @@ td.blank { height: 2.2em; }
 .cv-slogan { font-family: var(--serif); font-style: italic; color: var(--ink); font-size: 1.15em; margin-top: .9em; }
 .cv-who { margin-top: 1.6em; font-size: .9em; color: var(--text); line-height: 1.6; }
 .cv-who b { font-weight: 600; color: var(--ink); }
-.cv-side { position: absolute; font-size: .62em; letter-spacing: .2em; text-transform: uppercase; color: var(--blue-d); line-height: 1.9; }
+.cv-side { position: absolute; font-size: 1.45cqw; letter-spacing: .2em; text-transform: uppercase; color: var(--blue-d); line-height: 1.9; }
 .cv-side.l { left: 11%; top: 40%; text-align: left; }
 .cv-side.r { right: 7%; top: 6%; border-left: 1px solid var(--blue); padding-left: .8em; }
-.cv-quote { position: absolute; left: 10%; top: 3.5%; font-family: var(--serif); font-style: italic; color: #fff; font-size: .82em; line-height: 1.5; text-align: left; max-width: 7.5em; text-shadow: 0 1px 2px rgba(0,0,0,.25); }
+.cv-quote { position: absolute; left: 10%; top: 3.5%; font-family: var(--serif); font-style: italic; color: #fff; font-size: 1.9cqw; line-height: 1.5; text-align: left; max-width: 7.5em; text-shadow: 0 1px 2px rgba(0,0,0,.25); }
 
 /* ---------- içindekiler ---------- */
 .toc-title { font-family: var(--display); font-weight: 900; color: var(--ink); font-size: 3em; margin: .4em 0 .1em; text-transform: uppercase; letter-spacing: .01em; }
@@ -144,10 +144,10 @@ td.blank { height: 2.2em; }
 .cb { flex: none; width: 1.15em; height: 1.15em; border: 1.5px solid var(--blue); border-radius: 2px; display: grid; place-items: center; margin-top: .05em; background: #fff; }
 .cb.on { background: linear-gradient(180deg, #4b80b5, var(--blue-d)); border-color: var(--blue-d); }
 .cb.on::after { content: ""; width: .32em; height: .6em; border: solid #fff; border-width: 0 .14em .14em 0; transform: translateY(-.08em) rotate(45deg); }
-.dv-quote { margin-top: auto; padding-top: 1em; align-self: flex-end; margin-right: 0; font-family: var(--script); color: var(--ink); font-size: 1.7em; line-height: 1.15; text-align: center; transform: rotate(-4deg); }
+.dv-quote { margin-top: auto; padding-top: .4em; margin-bottom: .3em; align-self: flex-end; margin-right: 0; font-family: var(--script); color: var(--ink); font-size: 1.5em; line-height: 1.15; text-align: center; transform: rotate(-4deg); }
 .dv-quote::after { content: ""; display: block; height: 1px; background: var(--blue); width: 80%; margin: .4em auto 0; }
 .spine { position: absolute; right: 2.8%; top: 1.6%; width: 13.5%; height: 46%; background: linear-gradient(180deg, #4a76a2, var(--blue-d));
-  border-radius: 0 6px 0 3.2em; display: flex; flex-direction: column; align-items: center; padding: 1.1em 0 1.2em; gap: .8em; color: #fff; }
+  border-radius: 0 6px 0 3.2em; display: flex; flex-direction: column; align-items: center; padding: 1.1em 0 1.2em; gap: .8em; color: #fff; font-size: 2.3cqw; }
 .spine .sn { font-family: var(--display); font-weight: 600; font-size: 2.2em; line-height: 1; }
 .spine .sr { width: 55%; height: 1px; background: rgba(255,255,255,.6); }
 .spine .st { flex: 1; min-height: 0; writing-mode: vertical-rl; font-family: var(--display); font-weight: 600; text-transform: uppercase; font-size: 1.02em; letter-spacing: .04em; overflow: hidden; }
@@ -172,11 +172,40 @@ td.blank { height: 2.2em; }
 .preview.folder iframe { height: 36cqh; }
 .preview-note { flex-basis: 100%; font-size: .85em; color: var(--muted); margin: .2em 0 0; }
 .addform { display: grid; grid-template-columns: 1fr 1fr auto; gap: .35em; margin-top: .45em; font-size: .85em; }
-@container (max-width: 380px) { .addform { grid-template-columns: 1fr; } }
 .addform input { font: inherit; padding: .4em .5em; border: 1px solid var(--line); border-radius: 3px; background: #fff; color: var(--ink); min-width: 0; }
 .btn { border: 1px solid var(--blue-d); background: var(--blue-d); color: #fff; border-radius: 3px; padding: .4em .9em; font-weight: 500; }
 .msg { color: var(--red); margin: .3em 0 0; font-size: .85em; }
 .empty { color: var(--muted); font-size: .85em; margin: .3em 0 0; }
+
+
+/* ---------- belge listesi ve belge sayfaları ---------- */
+.ilist { list-style: none; padding: 0; margin: 0; display: grid; gap: .45em; }
+.irow { border: 1px solid var(--line); border-radius: 4px; background: #fff; padding: .45em .65em; margin: 0; transition: box-shadow .4s; }
+.irow.flash { box-shadow: 0 0 0 3px var(--blue-l); }
+.ih { display: flex; align-items: center; gap: .6em; font-weight: 500; color: var(--ink); font-size: .9em; }
+.ih .lbl { flex: 1; min-width: 0; }
+.ih .cnt { font-size: .8em; color: var(--muted); }
+.dnames { list-style: none; margin: .3em 0 0 1.75em; padding: 0; display: grid; gap: .15em; font-size: .82em; }
+.dnames li { margin: 0; }
+.dnames a { color: var(--blue-d); }
+.dnames a::before { content: "→ "; color: var(--blue-l); }
+.docpage .body { gap: 0; }
+.dmeta { display: flex; align-items: center; gap: .7em; font-size: .82em; margin: -.3em 0 .6em; flex-wrap: wrap; }
+.dmeta .dlink { color: var(--blue-d); font-weight: 500; }
+.dmeta .kind { color: var(--muted); }
+.dview { flex: 1; min-height: 0; border: 1px solid var(--line); background: #fff; display: flex; }
+.dview iframe { flex: 1; width: 100%; height: 100%; border: 0; }
+.dview .empty { margin: auto; }
+.dnote { font-size: .72em; color: var(--muted); margin: .4em 0 0; }
+.checklist.tight { gap: .3em; }
+.checklist.two { font-size: .92em; }
+.modal { position: fixed; inset: 0; z-index: 40; background: rgba(10,16,24,.55); display: flex; align-items: center; justify-content: center; padding: 16px; }
+.modal form { background: #fff; color: var(--ink); border-radius: 8px; padding: 22px; width: min(380px, 100%); display: grid; gap: 10px; box-shadow: 0 20px 50px rgba(0,0,0,.35); font-size: 14px; }
+.modal .gt { font-family: var(--display); font-weight: 800; margin: 0; }
+.modal .gs { font-size: 13px; color: var(--muted); margin: 0; }
+.modal input { font: inherit; padding: 9px 10px; border: 1px solid var(--line); border-radius: 4px; }
+.modal .err { color: var(--red); font-size: 13px; margin: 0; }
+.modal .row { display: flex; gap: 8px; justify-content: flex-end; }
 
 /* ---------- metin sayfaları ---------- */
 .mars { columns: 2; column-gap: 2.2em; column-rule: 1px solid var(--blue-l); font-family: var(--serif); font-size: .86em; line-height: 1.5; color: var(--ink); }
@@ -184,7 +213,6 @@ td.blank { height: 2.2em; }
 .sign { text-align: right; font-family: var(--display); font-size: 1.15em; color: var(--ink); margin-top: .3em; }
 .hitabe { font-family: var(--serif); font-size: .98em; text-align: justify; hyphens: auto; color: var(--ink); line-height: 1.6; }
 .ilkeler { columns: 2; column-gap: 1.6em; font-size: .9em; }
-@container (max-width: 380px) { .mars, .ilkeler { columns: 1; } }
 
 .frame { width: min(64%, 46cqh * .657); aspect-ratio: 600 / 913; margin: 2% auto 3%; padding: 3.2%; position: relative;
   background: linear-gradient(135deg, #9c7a3c, #d9bd7a 30%, #8a6a30 55%, #caa95f 80%, #7a5c28);
@@ -195,9 +223,9 @@ td.blank { height: 2.2em; }
 .caption { text-align: center; font-family: var(--display); font-size: 1.35em; font-weight: 700; color: var(--ink); margin: 0; }
 .caption span { display: block; font-family: var(--sans); font-size: .62em; font-weight: 400; color: var(--muted); letter-spacing: .14em; }
 .flag { width: 92%; margin: 6% auto 3%; display: block; box-shadow: 0 8px 22px rgba(0,0,0,.22); }
-.sheet-img { margin: 0 0 .6em; }
-.sheet-img img { display: block; width: 100%; height: auto; border: 1px solid var(--line); }
-.img-tools { margin-top: .5em; font-size: .8em; display: flex; gap: .5em; align-items: center; justify-content: center; }
+.sheet-img { margin: 0; flex: 1; min-height: 0; display: flex; justify-content: center; }
+.sheet-img img { display: block; max-width: 100%; max-height: 100%; object-fit: contain; border: 1px solid var(--line); }
+.img-tools { position: absolute; top: 2.2%; right: 10%; font-size: 1.7cqw; display: flex; gap: .5em; align-items: center; z-index: 3; }
 .img-tools .status { color: var(--muted); }
 .drop { outline: 3px dashed var(--blue); outline-offset: 4px; }
 .vh { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; pointer-events: none; }
@@ -239,7 +267,7 @@ body.locked .file, body.locked .bar, body.locked .book { visibility: hidden; }
   .book { position: absolute; inset: 0; display: block; overflow: visible; padding: 0; scroll-snap-type: none; perspective: 4000px; }
   .book::before, .book::after { display: none; }
   .page { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; visibility: hidden; transform-origin: left center;
-    backface-visibility: hidden; box-shadow: none; font-size: clamp(9px, 1.6vh, 15px); }
+    backface-visibility: hidden; box-shadow: none; }
   .page.on { visibility: visible; z-index: 3; }
   .page.under { visibility: visible; z-index: 2; }
   .stack { display: block; position: absolute; inset: 0; z-index: 1; background: var(--paper);
@@ -416,7 +444,6 @@ body.locked .file, body.locked .bar, body.locked .book { visibility: hidden; }
   <div class="body">
     <h2 class="ptitle">2026-2027 Çalışma Takvimi</h2>
     <figure class="sheet-img" data-img="calisma-takvimi" data-default="gorseller/calisma-takvimi.jpg" data-max="1600" style="margin:0"><img alt="2026-2027 eğitim-öğretim yılı çalışma takvimi" hidden><figcaption class="small img-msg">Görsel yükleniyor…</figcaption></figure>
-    <div class="items" data-slots="calisma-takvimi"></div>
   </div>
 </section>
 
@@ -438,7 +465,6 @@ body.locked .file, body.locked .bar, body.locked .book { visibility: hidden; }
       <tr><th>Gün</th><th>Nöbet yeri</th><th>Dönem</th></tr>
       <tr><td class="blank"></td><td></td><td></td></tr>
     </table></div>
-    <div class="items" data-slots="ders-programi nobet"></div>
   </div>
 </section>
 
@@ -457,7 +483,6 @@ body.locked .file, body.locked .bar, body.locked .book { visibility: hidden; }
       <tr><th>Sonuç (5 dk)</th><td>Çıkış bileti (2 soru)</td></tr>
       <tr><th>Ölçme-değerlendirme</th><td></td></tr>
     </table></div>
-    <div class="items" data-slots="ders-planlari"></div>
   </div>
 </section>
 
@@ -474,7 +499,6 @@ body.locked .file, body.locked .bar, body.locked .book { visibility: hidden; }
       <tr><th>Zaman</th><td>Zamanında teslim</td><td>1 gün gecikme</td><td>2-3 gün gecikme</td><td>Teslim etmez</td></tr>
     </table></div>
     <p class="small">Toplam 20 puan. Not: toplam puan × 5.</p>
-    <div class="items" data-slots="olcekler"></div>
   </div>
 </section>
 
@@ -490,7 +514,6 @@ body.locked .file, body.locked .bar, body.locked .book { visibility: hidden; }
       <tr><td>5</td><td></td><td></td><td></td><td></td></tr>
     </table></div>
     <p class="small">Başarısı %50'nin altında kalan öğrenme çıktıları için telafi etkinliği planlanır.</p>
-    <div class="items" data-slots="sinav-analiz"></div>
   </div>
 </section>
 
@@ -507,7 +530,6 @@ body.locked .file, body.locked .bar, body.locked .book { visibility: hidden; }
       <tr><th>Alınan kararlar</th><td class="blank"></td></tr>
       <tr><th>İmzalar</th><td>Öğretmen: &nbsp;&nbsp;&nbsp;&nbsp; Veli:</td></tr>
     </table></div>
-    <div class="items" data-slots="veli-gorusmeleri"></div>
   </div>
 </section>
 
@@ -553,7 +575,6 @@ body.locked .file, body.locked .bar, body.locked .book { visibility: hidden; }
       <li>Rehberlik servisiyle iş birliği yapar, gözlemlerini paylaşır.</li>
       <li>Veli görüşmelerini kayıt altına alır.</li>
     </ul>
-    <div class="items" data-slots="mevzuat"></div>
   </div>
 </section>
 
@@ -711,49 +732,25 @@ body.locked .file, body.locked .bar, body.locked .book { visibility: hidden; }
   const ITEM = {}; // slot id -> { sec, item }
   SECTIONS.forEach(s => s.items.forEach(it => { if (it.id) ITEM[it.id] = { sec: s, item: it }; }));
   const esc = (t) => String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-
-  // ---------- sayfaları oluştur ----------
   const mk = (html) => { const t = document.createElement('template'); t.innerHTML = html.trim(); return t.content.firstChild; };
-  const firstOf = (n) => book.querySelector('.page[data-sec="' + n + '"]');
+
+  // ---------- sabit sayfalar: bölüm kapakları ----------
+  const secPages = (n) => [...book.querySelectorAll('.page[data-sec="' + n + '"]')];
   SECTIONS.forEach((s, si) => {
     const dv = mk(`<section class="page divider" id="bolum-${s.n}" data-sec="${s.n}" data-div data-title="${esc(s.t)}">
       <div class="spine"><span class="sn">${s.n}</span><span class="sr"></span><span class="st">${esc(s.short || s.t)}</span><svg><use href="#ico-${s.icon}"/></svg></div>
       <div class="body"><div class="dv-num">${s.n}</div><div class="dv-rule"></div><h2 class="dv-title">${esc(s.t)}</h2>
-      <ul class="checklist${s.two ? ' two' : ''}">${s.items.map((it, k) => `<li><button type="button" data-k="${k}"><span class="cb"></span><span class="lbl">${esc(it.label)}</span></button></li>`).join('')}</ul>
+      <ul class="checklist${s.two ? ' two' : ''}${s.items.length > 9 && !s.two ? ' tight' : ''}">${s.items.map((it, k) => `<li><button type="button" data-k="${k}"><span class="cb"></span><span class="lbl">${esc(it.label)}</span></button></li>`).join('')}</ul>
       ${s.items.length <= 8 ? `<div class="dv-quote">${QUOTE}</div>` : ''}</div></section>`);
-    const docItems = s.items.filter(it => it.id && !it.page);
-    const pages = [dv];
-    if (docItems.length) pages.push(mk(`<section class="page" id="belgeler-${s.n}" data-sec="${s.n}" data-title="${esc(s.t)} · Belgeler">
-      <div class="body"><p class="eyebrow">${s.n} · ${esc(s.t)}</p><h2 class="ptitle">Belgeler</h2>
-      <div class="items" data-slots="${docItems.map(i => i.id).join(' ')}"></div></div></section>`));
-    const anchor = firstOf(s.n);
-    // bölüm kapağı + belge sayfası, bölümün sabit sayfalarından önce gelir
-    if (anchor) pages.forEach(p => book.insertBefore(p, anchor));
+    const first = secPages(s.n)[0];
+    if (first) book.insertBefore(dv, first);
     else {
-      const next = SECTIONS.slice(si + 1).map(x => firstOf(x.n)).find(Boolean);
-      pages.forEach(p => next ? book.insertBefore(p, next) : book.appendChild(p));
+      const nxt = SECTIONS.slice(si + 1).map(x => secPages(x.n)[0]).find(Boolean);
+      nxt ? book.insertBefore(dv, nxt) : book.appendChild(dv);
     }
   });
-  book.appendChild(mk(`<section class="page" id="diger-belgeler" data-title="Diğer Belgeler"><div class="body">
-    <h2 class="ptitle">Diğer Belgeler</h2><p class="small">Bölümü değişen ya da artık listede olmayan maddelere eklenmiş belgeler burada toplanır.</p>
-    <div class="items" id="orphans"></div><p class="empty" id="orphansEmpty">Burada belge yok.</p></div></section>`));
-
-  const pages = [...book.querySelectorAll('.page')];
-  const total = pages.length;
-
-  // süsler, delikler, sayfa numarası
-  pages.forEach((p, i) => {
-    const holes = document.createElement('div'); holes.className = 'holes'; holes.innerHTML = '<i></i><i></i>'; p.prepend(holes);
-    if (p.id === 'kapak') return;
-    const d = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    d.setAttribute('class', 'deco'); d.setAttribute('viewBox', '0 0 210 297'); d.setAttribute('preserveAspectRatio', 'none'); d.setAttribute('aria-hidden', 'true');
-    d.innerHTML = '<use href="#waves"/><use href="#circuit"/>' +
-      (p.dataset.div !== undefined ? '' : '<rect x="7" y="5" width="196" height="287" rx="4" fill="none" stroke="#a9c4de" stroke-width=".5"/>');
-    p.prepend(d);
-    const f = document.createElement('div'); f.className = 'pfoot';
-    f.innerHTML = '<span>Mehmet Karadeniz, 2026-2027</span><span>' + (i + 1) + '</span>';
-    p.appendChild(f);
-  });
+  const endMark = mk('<section class="page" id="diger-belgeler" data-title="Diğer Belgeler"><div class="body"><h2 class="ptitle">Diğer Belgeler</h2><p class="small">Listede artık olmayan maddelere eklenmiş belgeler burada toplanır.</p><ul class="ilist" id="orphans"></ul><p class="empty" id="orphansEmpty">Burada belge yok.</p></div></section>');
+  book.appendChild(endMark);
 
   // Türk bayrağı yıldızı (2893 sayılı Kanun ölçüleri, G = 1)
   (() => {
@@ -763,37 +760,74 @@ body.locked .file, body.locked .bar, body.locked .book { visibility: hidden; }
     document.getElementById('yildiz').setAttribute('points', pts.join(' '));
   })();
 
-  // içindekiler
+  // içindekiler ve yan sekmeler
   const toc = document.getElementById('toc');
   SECTIONS.forEach(s => {
     const li = document.createElement('li');
     li.innerHTML = `<a href="#bolum-${s.n}"><span class="n">${s.n}</span><span class="t">${esc(s.t)}</span><span class="dots"></span><span class="c" data-c="${s.n}"></span></a>`;
     toc.appendChild(li);
   });
-  // yan sekmeler
   const tabsEl = document.getElementById('tabs');
   SECTIONS.forEach((s, k) => {
     const b = document.createElement('button'); b.type = 'button'; b.textContent = s.n; b.title = s.t;
     b.style.setProperty('--h', 205 + k * 2); b.dataset.go = 'bolum-' + s.n; tabsEl.appendChild(b);
   });
   const tabs = [...tabsEl.children];
-  const tabIdx = tabs.map(b => pages.findIndex(p => p.id === b.dataset.go));
+
+  // ---------- sayfa süsleme (bir kez) ve numaralama ----------
+  const decorate = (p) => {
+    if (p.dataset.dec) return; p.dataset.dec = '1';
+    const holes = document.createElement('div'); holes.className = 'holes'; holes.innerHTML = '<i></i><i></i>'; p.prepend(holes);
+    if (p.id === 'kapak') return;
+    const d = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    d.setAttribute('class', 'deco'); d.setAttribute('viewBox', '0 0 210 297'); d.setAttribute('preserveAspectRatio', 'none'); d.setAttribute('aria-hidden', 'true');
+    d.innerHTML = '<use href="#waves"/><use href="#circuit"/>' +
+      (p.dataset.div !== undefined ? '' : '<rect x="7" y="5" width="196" height="287" rx="4" fill="none" stroke="#a9c4de" stroke-width=".5"/>');
+    p.prepend(d);
+    const f = document.createElement('div'); f.className = 'pfoot'; f.innerHTML = '<span>Mehmet Karadeniz, 2026-2027</span><span class="pn"></span>';
+    p.appendChild(f);
+  };
+  let pages = [], total = 0, tabIdx = [];
+  const refreshPages = () => {
+    pages = [...book.querySelectorAll('.page')];
+    total = pages.length;
+    pages.forEach((p, i) => { decorate(p); const pn = p.querySelector('.pn'); if (pn) pn.textContent = i + 1; });
+    tabIdx = tabs.map(b => pages.findIndex(p => p.id === b.dataset.go));
+  };
+  refreshPages();
+
+  // Sayfa A4'e sığmazsa yazıyı biraz küçült (kaydırma yok)
+  const fit = () => pages.forEach(p => {
+    const b = p.querySelector('.body'); if (!b || p.querySelector('.ilist') || p.classList.contains('docpage')) return;
+    b.style.fontSize = '';
+    for (let sc = 0.96; b.scrollHeight > b.clientHeight + 1 && sc > 0.7; sc -= 0.04) b.style.fontSize = (2.3 * sc).toFixed(3) + 'cqw';
+  });
+  fit();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  let fitT; window.addEventListener('resize', () => { clearTimeout(fitT); fitT = setTimeout(fit, 150); });
 
   // ---------- gezinme ----------
   const prev = document.getElementById('prev'), next = document.getElementById('next'), count = document.getElementById('count');
   const desk = window.matchMedia('(min-width: 900px)');
   let current = 0, busy = false;
+  const wakeFrames = (i) => {
+    for (let k = i - 1; k <= i + 1; k++) {
+      const p = pages[k]; if (!p) continue;
+      p.querySelectorAll('iframe[data-src]').forEach(f => { f.src = f.dataset.src; f.removeAttribute('data-src'); });
+    }
+  };
   const setCurrent = (i) => {
     current = i;
     count.textContent = (i + 1) + ' / ' + total;
     prev.disabled = i === 0; next.disabled = i === total - 1;
     let sec = -1; tabIdx.forEach((ti, k) => { if (ti > -1 && ti <= i) sec = k; });
     tabs.forEach((b, k) => b.classList.toggle('active', k === sec));
+    wakeFrames(i);
   };
   const flip = (i, animate) => {
     const from = pages[current], to = pages[i];
     pages.forEach(p => p.classList.remove('on', 'under', 'turn-out', 'turn-in'));
-    if (!animate || from === to) { to.classList.add('on'); return; }
+    if (!animate || !from || from === to) { to.classList.add('on'); return; }
     busy = true;
     if (i > current) { to.classList.add('under'); from.classList.add('turn-out'); }
     else { from.classList.add('under'); to.classList.add('turn-in'); }
@@ -817,9 +851,9 @@ body.locked .file, body.locked .bar, body.locked .book { visibility: hidden; }
   prev.addEventListener('click', () => goTo(current - 1));
   next.addEventListener('click', () => goTo(current + 1));
   document.getElementById('tocBtn').addEventListener('click', () => goTo(1));
-  tabs.forEach((b, k) => b.addEventListener('click', () => goTo(tabIdx[k])));
+  tabs.forEach((b) => b.addEventListener('click', () => goId(b.dataset.go)));
   document.addEventListener('keydown', (e) => {
-    if (e.target.closest('input')) return;
+    if (e.target.closest('input') || document.querySelector('.modal')) return;
     if (e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); goTo(current + 1); }
     if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); goTo(current - 1); }
     if (e.key === 'Home') goTo(0);
@@ -827,25 +861,21 @@ body.locked .file, body.locked .bar, body.locked .book { visibility: hidden; }
   });
   let wheelLock = false;
   book.addEventListener('wheel', (e) => {
-    const b = e.target.closest('.body');
-    if (b && b.scrollHeight > b.clientHeight + 2) return;
-    if (e.target.closest('iframe') || Math.abs(e.deltaY) < Math.abs(e.deltaX) || wheelLock) return;
+    if (Math.abs(e.deltaY) < Math.abs(e.deltaX) || wheelLock) return;
     e.preventDefault(); wheelLock = true; setTimeout(() => wheelLock = false, 450);
     goTo(current + (e.deltaY > 0 ? 1 : -1));
   }, { passive: false });
   book.addEventListener('click', (e) => {
     const a = e.target.closest('a[href^="#"]');
-    if (!a) return;
-    e.preventDefault(); goId(a.getAttribute('href').slice(1));
-  });
-  // bölüm kapağındaki maddeye tıklama
-  book.addEventListener('click', (e) => {
+    if (a) { e.preventDefault(); goId(a.getAttribute('href').slice(1)); return; }
     const b = e.target.closest('.checklist button'); if (!b) return;
     const s = SECTIONS.find(x => x.n === b.closest('.page').dataset.sec), it = s.items[+b.dataset.k];
-    if (it.page) { goId(it.page); return; }
-    goId('belgeler-' + s.n);
-    const el = document.getElementById('it-' + it.id);
-    if (el) setTimeout(() => { el.scrollIntoView({ block: 'center' }); el.classList.add('flash'); setTimeout(() => el.classList.remove('flash'), 1400); }, desk.matches ? 600 : 400);
+    if (it.page && !it.id) { goId(it.page); return; }
+    if (it.page && ITEM[it.id] && !docs.some(d => d.slot === it.id)) { goId(it.page); return; }
+    const row = document.getElementById('it-' + it.id);
+    const pg = row ? row.closest('.page') : null;
+    if (pg) { goId(pg.id); row.classList.add('flash'); setTimeout(() => row.classList.remove('flash'), 1600); }
+    else if (it.page) goId(it.page);
   });
   const fromHash = () => { const i = pages.findIndex(p => '#' + p.id === location.hash); if (i >= 0) goTo(i, false); };
   window.addEventListener('hashchange', fromHash);
@@ -857,6 +887,7 @@ body.locked .file, body.locked .bar, body.locked .book { visibility: hidden; }
   // ================= Firebase =================
   const OWNER = 'i4jvgGhne2a5LLyZpvTlVZnraGJ3';
   const gate = document.getElementById('gate'), gErr = document.getElementById('gErr');
+  let docs = [];
   if (!window.firebase) {
     gErr.textContent = 'Bağlantı kurulamadı. İnternet bağlantınızı kontrol edip sayfayı yenileyin.';
     gErr.hidden = false; document.getElementById('gBtn').disabled = true;
@@ -872,10 +903,8 @@ body.locked .file, body.locked .bar, body.locked .book { visibility: hidden; }
   });
   const db = firebase.firestore();
   const auth = firebase.auth();
-  let canWrite = false;
+  let canWrite = false, state = 'loading';
 
-  // ---------- belge alanları ----------
-  let docs = [], state = 'loading';
   const driveKind = (url) => {
     if (/docs\.google\.com\/document/.test(url)) return 'Doküman';
     if (/docs\.google\.com\/spreadsheets/.test(url)) return 'Tablo';
@@ -886,106 +915,137 @@ body.locked .file, body.locked .bar, body.locked .book { visibility: hidden; }
   };
   const previewUrl = (url) => {
     let m = url.match(/drive\.google\.com\/drive\/(?:u\/\d+\/)?folders\/([\w-]+)/);
-    if (m) return { folder: true, src: 'https://drive.google.com/embeddedfolderview?id=' + m[1] + '#list' };
+    if (m) return 'https://drive.google.com/embeddedfolderview?id=' + m[1] + '#list';
     m = url.match(/docs\.google\.com\/(document|spreadsheets|presentation)\/d\/([\w-]+)/);
-    if (m) return { src: 'https://docs.google.com/' + m[1] + '/d/' + m[2] + '/preview' };
+    if (m) return 'https://docs.google.com/' + m[1] + '/d/' + m[2] + '/preview';
     m = url.match(/drive\.google\.com\/file\/d\/([\w-]+)/) || url.match(/drive\.google\.com\/open\?id=([\w-]+)/) || url.match(/[?&]id=([\w-]+)/);
-    if (m && /google\.com/.test(url)) return { src: 'https://drive.google.com/file/d/' + m[1] + '/preview' };
+    if (m && /google\.com/.test(url)) return 'https://drive.google.com/file/d/' + m[1] + '/preview';
     return null;
   };
-  let closed = new Set();
-  try { closed = new Set(JSON.parse(localStorage.getItem('od-kapali') || '[]')); } catch (x) {}
-  const saveClosed = () => { try { localStorage.setItem('od-kapali', JSON.stringify([...closed])); } catch (x) {} };
 
-  const docRow = (d) => {
-    const li = document.createElement('li');
-    const a = document.createElement('a'); a.href = d.url; a.target = '_blank'; a.rel = 'noopener'; a.textContent = d.ad || d.url;
-    const k = document.createElement('span'); k.className = 'kind'; k.textContent = driveKind(d.url);
-    li.append(a, k);
-    const pv = previewUrl(d.url);
-    if (pv) {
-      const tg = document.createElement('button'); tg.type = 'button'; tg.className = 'ghost';
-      const box = document.createElement('div'); box.className = 'preview' + (pv.folder ? ' folder' : '');
-      const note = document.createElement('p'); note.className = 'preview-note';
-      note.textContent = 'Görünmüyorsa tarayıcıda Google hesabınızla oturum açık olmalı; ya da adına tıklayıp Drive\'da açın.';
-      const sync = () => {
-        const open = !closed.has(d.id);
-        box.hidden = note.hidden = !open; tg.textContent = open ? 'Gizle' : 'Göster';
-        if (open && !box.firstChild) { const f = document.createElement('iframe'); f.src = pv.src; f.loading = 'lazy'; f.title = d.ad || 'Belge önizlemesi'; box.appendChild(f); }
-      };
-      tg.addEventListener('click', () => { closed.has(d.id) ? closed.delete(d.id) : closed.add(d.id); saveClosed(); sync(); });
-      li.appendChild(tg); li.append(box, note); sync();
+  // ---------- belge ekleme penceresi ----------
+  const openAdd = (slot, label) => {
+    const m = document.createElement('div'); m.className = 'modal';
+    m.innerHTML = '<form><p class="gt" style="font-size:20px"></p><p class="gs">Drive\'da dosyayı açın, "Bağlantıyı kopyala" deyin ve buraya yapıştırın.</p>' +
+      '<input id="mUrl" name="url" type="url" placeholder="Drive bağlantısı" required>' +
+      '<input id="mAd" name="ad" type="text" placeholder="Belge adı (isteğe bağlı)">' +
+      '<p class="err" hidden></p><div class="row"><button type="button" class="ghost" data-x>Vazgeç</button><button class="btn" type="submit">Ekle</button></div></form>';
+    m.querySelector('.gt').textContent = label;
+    document.body.appendChild(m);
+    const f = m.querySelector('form'), err = m.querySelector('.err');
+    const close = () => m.remove();
+    m.querySelector('[data-x]').onclick = close;
+    m.addEventListener('click', (e) => { if (e.target === m) close(); });
+    f.url.focus();
+    f.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const url = f.url.value.trim();
+      if (!/^https:\/\//.test(url)) { err.textContent = 'Bağlantı https:// ile başlamalı.'; err.hidden = false; return; }
+      const btn = f.querySelector('[type=submit]'); btn.disabled = true;
+      try { await db.collection('belgeler').add({ slot, url, ad: f.ad.value.trim() || label, t: Date.now() }); close(); }
+      catch (x) { btn.disabled = false; err.textContent = 'Belge kaydedilemedi, tekrar deneyin.'; err.hidden = false; }
+    });
+  };
+  const removeDoc = async (btn, id) => {
+    if (!btn.classList.contains('confirm')) {
+      btn.classList.add('confirm'); btn.textContent = 'Emin misiniz?';
+      setTimeout(() => { btn.classList.remove('confirm'); btn.textContent = 'Kaldır'; }, 3000); return;
     }
+    btn.disabled = true;
+    try { await db.collection('belgeler').doc(id).delete(); } catch (x) { btn.disabled = false; btn.textContent = 'Kaldırılamadı'; }
+  };
+
+  // ---------- belge listesi satırı ----------
+  const itemRow = (slot, label) => {
+    const items = docs.filter(d => d.slot === slot).sort((a, b) => (a.t || 0) - (b.t || 0));
+    const li = document.createElement('li'); li.className = 'irow'; li.id = 'it-' + slot;
+    li.innerHTML = '<div class="ih"><span class="cb' + (items.length ? ' on' : '') + '"></span><span class="lbl"></span><span class="cnt"></span></div>';
+    li.querySelector('.lbl').textContent = label;
+    li.querySelector('.cnt').textContent = items.length ? items.length + ' belge' : (state === 'loading' ? '…' : 'eksik');
     if (canWrite) {
-      const del = document.createElement('button'); del.type = 'button'; del.className = 'ghost'; del.textContent = 'Kaldır';
-      del.addEventListener('click', async () => {
-        if (!del.classList.contains('confirm')) {
-          del.classList.add('confirm'); del.textContent = 'Emin misiniz?';
-          setTimeout(() => { del.classList.remove('confirm'); del.textContent = 'Kaldır'; }, 3000); return;
-        }
-        del.disabled = true;
-        try { await db.collection('belgeler').doc(d.id).delete(); } catch (x) { del.disabled = false; del.textContent = 'Kaldırılamadı'; }
-      });
-      li.insertBefore(del, li.querySelector('.preview'));
+      const add = document.createElement('button'); add.type = 'button'; add.className = 'add'; add.textContent = '+ Ekle';
+      add.addEventListener('click', () => openAdd(slot, label));
+      li.querySelector('.ih').appendChild(add);
+    }
+    if (items.length) {
+      const ul = document.createElement('ul'); ul.className = 'dnames';
+      items.forEach(d => { const x = document.createElement('li'); const a = document.createElement('a'); a.href = '#doc-' + d.id; a.textContent = d.ad || d.url; x.appendChild(a); ul.appendChild(x); });
+      li.appendChild(ul);
     }
     return li;
   };
 
-  const itemBox = (slot, label) => {
-    const items = docs.filter(d => d.slot === slot).sort((a, b) => (a.t || 0) - (b.t || 0));
-    const box = document.createElement('div'); box.className = 'item'; box.id = 'it-' + slot;
-    const h = document.createElement('div'); h.className = 'item-h';
-    h.innerHTML = '<span class="cb' + (items.length ? ' on' : '') + '"></span><span class="lbl"></span><span class="cnt"></span>';
-    h.querySelector('.lbl').textContent = label;
-    h.querySelector('.cnt').textContent = items.length ? items.length + ' belge' : '';
-    box.appendChild(h);
+  // ---------- belge sayfası ----------
+  const docPage = (s, label, d) => {
+    const pv = previewUrl(d.url);
+    const p = mk(`<section class="page docpage" id="doc-${d.id}" data-dyn data-sec="${s ? s.n : ''}" data-title=""><div class="body">
+      <p class="eyebrow"></p><h2 class="ptitle"></h2>
+      <div class="dmeta"><a class="dlink" target="_blank" rel="noopener"></a><span class="kind"></span></div>
+      <div class="dview"></div></div></section>`);
+    p.querySelector('.eyebrow').textContent = s ? s.n + ' · ' + s.t : 'Diğer belgeler';
+    p.querySelector('.ptitle').textContent = label;
+    const a = p.querySelector('.dlink'); a.href = d.url; a.textContent = (d.ad || 'Belge') + ' · Drive\'da aç';
+    p.querySelector('.kind').textContent = driveKind(d.url);
     if (canWrite) {
-      const add = document.createElement('button'); add.type = 'button'; add.className = 'add'; add.textContent = '+ Belge ekle';
-      add.addEventListener('click', () => { const f = box.querySelector('form'); f.hidden = !f.hidden; if (!f.hidden) f.url.focus(); });
-      h.appendChild(add);
+      const del = document.createElement('button'); del.type = 'button'; del.className = 'ghost'; del.textContent = 'Kaldır';
+      del.addEventListener('click', () => removeDoc(del, d.id)); p.querySelector('.dmeta').appendChild(del);
     }
-    if (items.length) { const ul = document.createElement('ul'); ul.className = 'dlist'; items.forEach(d => ul.appendChild(docRow(d))); box.appendChild(ul); }
-    else if (state !== 'ready') { const p = document.createElement('p'); p.className = 'empty'; p.textContent = state === 'loading' ? 'Yükleniyor…' : 'Belgeler şu an yüklenemedi.'; box.appendChild(p); }
-    if (canWrite) {
-      const f = document.createElement('form'); f.className = 'addform'; f.hidden = true;
-      f.innerHTML = `<input id="u-${slot}" name="url" type="url" placeholder="Drive bağlantısı" required aria-label="Drive bağlantısı">` +
-        `<input id="a-${slot}" name="ad" type="text" placeholder="Belge adı (isteğe bağlı)" aria-label="Belge adı"><button class="btn" type="submit">Ekle</button>`;
-      const msg = document.createElement('p'); msg.className = 'msg'; msg.hidden = true;
-      f.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const url = f.url.value.trim();
-        if (!/^https:\/\//.test(url)) { msg.textContent = 'Bağlantı https:// ile başlamalı.'; msg.hidden = false; return; }
-        const btn = f.querySelector('button'); btn.disabled = true; msg.hidden = true;
-        try { await db.collection('belgeler').add({ slot, url, ad: f.ad.value.trim() || label, t: Date.now() }); }
-        catch (x) { btn.disabled = false; msg.textContent = 'Belge kaydedilemedi, tekrar deneyin.'; msg.hidden = false; }
-      });
-      box.append(f, msg);
+    const v = p.querySelector('.dview');
+    if (pv) {
+      const f = document.createElement('iframe'); f.dataset.src = pv; f.title = d.ad || label; v.appendChild(f);
+      const n = document.createElement('p'); n.className = 'dnote';
+      n.textContent = 'Belge görünmüyorsa tarayıcıda Google hesabınızla oturum açık olmalı; ya da yukarıdaki bağlantıyla Drive\'da açın.';
+      p.querySelector('.body').appendChild(n);
+    } else {
+      v.innerHTML = '<p class="empty">Bu bağlantı sayfada gösterilemiyor. Yukarıdaki bağlantıyla açın.</p>';
     }
-    return box;
+    return p;
   };
 
-  const containers = [...document.querySelectorAll('.items[data-slots]')];
-  const render = () => {
-    containers.forEach(c => {
-      c.innerHTML = '';
-      c.dataset.slots.split(' ').forEach(id => c.appendChild(itemBox(id, ITEM[id] ? ITEM[id].item.label : id)));
+  // ---------- dinamik sayfaları kur (belge listeleri + belge sayfaları) ----------
+  const listPage = (s, cont) => mk(`<section class="page" data-dyn data-sec="${s.n}" id="belgeler-${s.n}${cont ? '-' + cont : ''}" data-title="">
+    <div class="body"><p class="eyebrow">${s.n} · ${esc(s.t)}</p><h2 class="ptitle">${cont ? 'Belgeler (devam)' : 'Belgeler'}</h2><ul class="ilist"></ul></div></section>`);
+  const build = () => {
+    const keepId = pages[current] ? pages[current].id : null;
+    book.querySelectorAll('.page[data-dyn]').forEach(p => p.remove());
+    SECTIONS.forEach(s => {
+      const ids = s.items.filter(it => it.id);
+      if (!ids.length) return;
+      const after = secPages(s.n).pop();
+      let anchor = after.nextSibling;
+      const insert = (p) => { book.insertBefore(p, anchor); };
+      // liste sayfaları: taşanı yeni sayfaya aktar
+      let n = 0, pg = listPage(s, 0); insert(pg);
+      let ul = pg.querySelector('.ilist'), body = pg.querySelector('.body');
+      ids.forEach(it => {
+        const row = itemRow(it.id, it.label);
+        ul.appendChild(row);
+        if (body.scrollHeight > body.clientHeight + 1 && ul.children.length > 1) {
+          row.remove(); n++; pg = listPage(s, n); insert(pg);
+          ul = pg.querySelector('.ilist'); body = pg.querySelector('.body'); ul.appendChild(row);
+        }
+      });
+      ids.forEach(it => docs.filter(d => d.slot === it.id).sort((a, b) => (a.t || 0) - (b.t || 0)).forEach(d => insert(docPage(s, it.label, d))));
     });
     // sahipsiz belgeler
     const orph = document.getElementById('orphans'); orph.innerHTML = '';
-    const lost = [...new Set(docs.filter(d => !ITEM[d.slot]).map(d => d.slot))];
-    lost.forEach(id => orph.appendChild(itemBox(id, id)));
+    const lost = docs.filter(d => !ITEM[d.slot]);
+    [...new Set(lost.map(d => d.slot))].forEach(id => orph.appendChild(itemRow(id, id)));
+    lost.forEach(d => book.appendChild(docPage(null, d.slot, d)));
     document.getElementById('orphansEmpty').hidden = lost.length > 0;
     // kutucuklar ve sayaçlar
     const has = new Set(docs.map(d => d.slot));
     const isDone = (it) => (it.page && !it.id) || it.done || (it.id && has.has(it.id));
     SECTIONS.forEach(s => {
-      const dv = document.getElementById('bolum-' + s.n);
-      dv.querySelectorAll('.checklist button').forEach(b => b.querySelector('.cb').classList.toggle('on', isDone(s.items[+b.dataset.k])));
-      const n = s.items.filter(isDone).length, c = toc.querySelector('[data-c="' + s.n + '"]');
-      c.textContent = n + '/' + s.items.length; c.classList.toggle('full', n === s.items.length);
+      document.getElementById('bolum-' + s.n).querySelectorAll('.checklist button').forEach(b => b.querySelector('.cb').classList.toggle('on', isDone(s.items[+b.dataset.k])));
+      const k = s.items.filter(isDone).length, c = toc.querySelector('[data-c="' + s.n + '"]');
+      c.textContent = k + '/' + s.items.length; c.classList.toggle('full', k === s.items.length);
     });
+    refreshPages();
+    let i = keepId ? pages.findIndex(p => p.id === keepId) : current;
+    if (i < 0) i = Math.min(current, total - 1);
+    current = i; pages.forEach(p => p.classList.remove('on')); goTo(i, false);
   };
-  render();
 
   // ---------- görseller ----------
   const shrink = async (file, maxDim, limit = 850000) => {
@@ -1007,9 +1067,9 @@ body.locked .file, body.locked .bar, body.locked .book { visibility: hidden; }
   const imgBoxes = [...document.querySelectorAll('[data-img]')].map(el => {
     const box = { el, key: el.dataset.img, img: el.querySelector('img'), msg: el.querySelector('.img-msg'), empty: el.querySelector('.frame-empty'), max: +el.dataset.max || 1400 };
     const tools = document.createElement('div'); tools.className = 'img-tools'; tools.hidden = true;
-    tools.innerHTML = '<button type="button" class="ghost">Görseli değiştir</button><span class="status"></span>';
+    tools.innerHTML = '<span class="status"></span><button type="button" class="ghost">Görseli değiştir</button>';
     tools.querySelector('button').addEventListener('click', () => { pickFor = box; picker.click(); });
-    el.insertAdjacentElement('afterend', tools);
+    el.closest('.page').appendChild(tools);
     box.tools = tools; box.status = tools.querySelector('.status');
     box.show = (src) => {
       box.img.onerror = () => { box.img.hidden = true; if (box.empty) box.empty.hidden = false; box.msg.hidden = false; box.msg.textContent = 'Görsel henüz eklenmedi.'; };
@@ -1043,10 +1103,10 @@ body.locked .file, body.locked .bar, body.locked .book { visibility: hidden; }
 
   // ---------- veri dinleme (girişten sonra) ----------
   const startData = () => {
-    const slow = setTimeout(() => { if (state === 'loading') { state = 'offline'; render(); } }, 10000);
+    const slow = setTimeout(() => { if (state === 'loading') { state = 'offline'; build(); } }, 10000);
     db.collection('belgeler').onSnapshot((snap) => {
-      docs = snap.docs.map(s => ({ id: s.id, ...s.data() })); clearTimeout(slow); state = 'ready'; render();
-    }, () => { clearTimeout(slow); state = 'offline'; render(); });
+      docs = snap.docs.map(s => ({ id: s.id, ...s.data() })); clearTimeout(slow); state = 'ready'; build();
+    }, () => { clearTimeout(slow); state = 'offline'; build(); });
     imgBoxes.forEach(box => db.collection('gorseller').doc(box.key).onSnapshot((s) => {
       const v = s.exists ? s.data() : null; if (v && v.src) box.show(v.src);
     }, () => {}));
@@ -1068,9 +1128,8 @@ body.locked .file, body.locked .bar, body.locked .book { visibility: hidden; }
     document.body.classList.toggle('locked', !canWrite);
     gate.hidden = canWrite;
     if (!canWrite) { document.getElementById('gPass').value = ''; return; }
-    if (!started) { started = true; startData(); }
-    render(); imgBoxes.forEach(b => { b.tools.hidden = !canWrite; });
-    requestAnimationFrame(() => goTo(current, false));
+    imgBoxes.forEach(b => { b.tools.hidden = false; });
+    requestAnimationFrame(() => { build(); if (!started) { started = true; startData(); } });
   });
 })();
 </script>
