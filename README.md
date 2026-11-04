@@ -1,0 +1,2 @@
+# Ogretmendosyasi
+Öğretmen dosyası
