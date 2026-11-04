@@ -241,6 +241,7 @@ td.blank { height: 2.2em; }
 }
 .bar button, .bar .count { border: 1px solid var(--line); background: #fff; color: var(--ink); border-radius: 999px; height: 34px; padding: 0 14px; box-shadow: 0 1px 3px rgba(0,0,0,.12); }
 .bar button:disabled { opacity: .45; cursor: default; }
+.bar .vtag { font-size: 11px; color: var(--muted); background: #fff; border-radius: 999px; padding: 4px 8px; box-shadow: 0 1px 3px rgba(0,0,0,.12); }
 .bar .count { display: grid; place-items: center; min-width: 70px; font-variant-numeric: tabular-nums; }
 @media (max-width: 520px) { .bar .wide { display: none; } }
 
@@ -293,7 +294,7 @@ body.locked .file, body.locked .bar, body.locked .book { visibility: hidden; }
 <div class="gate" id="gate">
   <form id="gateForm">
     <p class="gt">Öğretmen Dosyası</p>
-    <p class="gs">Karahüyük Ali Akkanat Ortaokulu · 2026-2027<br>Dosyayı görmek için giriş yapın.</p>
+    <p class="gs">Karahüyük Ali Akkanat Ortaokulu · 2026-2027 · <span class="ver"></span><br>Dosyayı görmek için giriş yapın.</p>
     <input id="gMail" type="email" placeholder="E-posta" autocomplete="username" required>
     <input id="gPass" type="password" placeholder="Şifre" autocomplete="current-password" required>
     <p class="err" id="gErr" hidden></p>
@@ -588,6 +589,7 @@ body.locked .file, body.locked .bar, body.locked .book { visibility: hidden; }
   <button id="tocBtn">İçindekiler</button>
   <button id="authBtn">Çıkış</button>
   <span class="count" id="count">1 / 1</span>
+  <span class="vtag ver"></span>
   <button id="next" aria-label="Sonraki sayfa"><span class="wide">Sonraki </span>›</button>
 </nav>
 
@@ -727,7 +729,9 @@ body.locked .file, body.locked .bar, body.locked .book { visibility: hidden; }
       { id: 'sertifikalar', label: 'Hizmet İçi Eğitim Belgeleri ve Sertifikalar' },
       { id: 'resmi-yazilar', label: 'Resmî Yazışmalar' } ] }
   ];
+  const VERSION = '1.4'; // her değişiklikte artır: 1.5, 1.6 ...
   const QUOTE = '"Bilgi,<br>geleceği aydınlatan<br>en güçlü ışıktır."';
+  document.querySelectorAll('.ver').forEach(e => { e.textContent = 'v' + VERSION; });
   const book = document.getElementById('book');
   const ITEM = {}; // slot id -> { sec, item }
   SECTIONS.forEach(s => s.items.forEach(it => { if (it.id) ITEM[it.id] = { sec: s, item: it }; }));
@@ -784,7 +788,7 @@ body.locked .file, body.locked .bar, body.locked .book { visibility: hidden; }
     d.innerHTML = '<use href="#waves"/><use href="#circuit"/>' +
       (p.dataset.div !== undefined ? '' : '<rect x="7" y="5" width="196" height="287" rx="4" fill="none" stroke="#a9c4de" stroke-width=".5"/>');
     p.prepend(d);
-    const f = document.createElement('div'); f.className = 'pfoot'; f.innerHTML = '<span>Mehmet Karadeniz, 2026-2027</span><span class="pn"></span>';
+    const f = document.createElement('div'); f.className = 'pfoot'; f.innerHTML = '<span>Mehmet Karadeniz, 2026-2027 · v' + VERSION + '</span><span class="pn"></span>';
     p.appendChild(f);
   };
   let pages = [], total = 0, tabIdx = [];

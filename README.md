@@ -14,3 +14,12 @@ Mehmet Karadeniz, 2026-2027
   Firestore'daki görsel, `gorseller/` klasöründeki varsayılanın yerine geçer.
 
 Firebase Storage kullanılmaz (ücretsiz Spark planında yok).
+
+## Sürümler
+- **v1.4** — Gerçek A4 düzeni: sayfa içi kaydırma yok; belgeler kendi sayfasında; belge ekleme penceresi.
+- **v1.3** — Yeni tasarım: 13 bölüm, numaralı bölüm kapakları, otomatik işaretlenen kutucuklar, Türk Bayrağı sayfası.
+- **v1.2** — Drive belgeleri sayfa içinde önizlenir.
+- **v1.1** — Dosyayı görmek için giriş zorunlu; Firestore yalnızca sahibine açık.
+- **v1.0** — İlk sürüm: Firebase bağlantılı, sayfa sayfa çevrilen öğretmen dosyası.
+
+Her değişiklikte `index.html` içindeki `VERSION` artırılır ve buraya satır eklenir.
