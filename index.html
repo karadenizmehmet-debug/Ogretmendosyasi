@@ -263,10 +263,31 @@ button { font: inherit; font-family: var(--sans); cursor: pointer; }
 .modal .err { color: var(--crimson); font-size: 13px; margin: 0; }
 .img-tools { margin-top: .6em; font-family: var(--sans); font-size: .8em; display: flex; gap: .5em; align-items: center; }
 .img-tools .status { color: var(--muted); }
+/* giriş kapısı */
+body.locked .file, body.locked .bar, body.locked .book { visibility: hidden; }
+.gate { position: fixed; inset: 0; z-index: 30; display: flex; align-items: center; justify-content: center; background: var(--desk);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.gate form { background: var(--paper); color: var(--ink); border-radius: 8px; padding: 26px 24px; width: min(360px, 100%); display: grid; gap: 10px;
+  font-family: var(--sans); box-shadow: 0 20px 50px rgba(0,0,0,.3); }
+.gate .gt { font-family: var(--serif); font-size: 24px; font-weight: 700; color: var(--navy); margin: 0; }
+.gate .gs { font-size: 13px; color: var(--muted); margin: 0 0 6px; }
+.gate input { font: inherit; padding: 10px; border: 1px solid var(--rule); border-radius: 4px; background: var(--paper); color: var(--ink); }
+.gate .err { color: var(--crimson); font-size: 13px; margin: 0; }
+.gate .btn { padding: 10px; }
 </style>
 
 </head>
-<body>
+<body class="locked">
+<div class="gate" id="gate">
+  <form id="gateForm">
+    <p class="gt">Öğretmen Dosyası</p>
+    <p class="gs">Karahüyük Ali Akkanat Ortaokulu · 2026-2027<br>Dosyayı görmek için giriş yapın.</p>
+    <input id="gMail" type="email" placeholder="E-posta" autocomplete="username" required>
+    <input id="gPass" type="password" placeholder="Şifre" autocomplete="current-password" required>
+    <p class="err" id="gErr" hidden></p>
+    <button class="btn" type="submit" id="gBtn">Giriş yap</button>
+  </form>
+</div>
 <div class="file">
 <div class="board"></div>
 <div class="book" id="book">
@@ -843,14 +864,11 @@ button { font: inherit; font-family: var(--sans); cursor: pointer; }
 
   // ================= Firebase =================
   const OWNER = 'i4jvgGhne2a5LLyZpvTlVZnraGJ3';
+  const gate = document.getElementById('gate');
+  const gErr = document.getElementById('gErr');
   if (!window.firebase) {
-    // Firebase yüklenemedi (ör. okul ağı engeli): sayfalar ve varsayılan görseller yine görünür.
-    document.querySelectorAll('[data-img]').forEach(el => {
-      const img = el.querySelector('img'), msg = el.querySelector('.img-msg'), empty = el.querySelector('.frame-empty');
-      if (el.dataset.default) { img.src = el.dataset.default; img.hidden = false; if (empty) empty.hidden = true; if (msg) msg.hidden = true; }
-    });
-    document.querySelectorAll('.slot').forEach(sl => { sl.innerHTML = '<div class="slot-h"><span></span></div><p class="slot-empty">Belgeler şu an yüklenemedi. İnternet bağlantınızı kontrol edin.</p>'; sl.querySelector('span').textContent = sl.dataset.label; });
-    document.getElementById('authBtn').hidden = true;
+    gErr.textContent = 'Bağlantı kurulamadı. İnternet bağlantınızı kontrol edip sayfayı yenileyin.';
+    gErr.hidden = false; document.getElementById('gBtn').disabled = true;
     return;
   }
   firebase.initializeApp({
@@ -885,11 +903,25 @@ button { font: inherit; font-family: var(--sans); cursor: pointer; }
       catch (x) { err.textContent = 'Giriş yapılamadı. E-posta ya da şifre hatalı.'; err.hidden = false; }
     });
   };
-  authBtn.addEventListener('click', () => { auth.currentUser ? auth.signOut() : openLogin(); });
+  authBtn.textContent = 'Çıkış';
+  authBtn.addEventListener('click', () => auth.signOut());
+  document.getElementById('gateForm').addEventListener('submit', async (e) => {
+    e.preventDefault(); gErr.hidden = true;
+    const btn = document.getElementById('gBtn'); btn.disabled = true;
+    try { await auth.signInWithEmailAndPassword(document.getElementById('gMail').value.trim(), document.getElementById('gPass').value); }
+    catch (x) { gErr.textContent = 'Giriş yapılamadı. E-posta ya da şifre hatalı.'; gErr.hidden = false; }
+    btn.disabled = false;
+  });
+  let started = false;
   auth.onAuthStateChanged((u) => {
     canWrite = !!u && u.uid === OWNER;
-    authBtn.textContent = u ? 'Çıkış' : 'Giriş';
+    if (u && !canWrite) { gErr.textContent = 'Bu hesabın dosyayı görme izni yok.'; gErr.hidden = false; auth.signOut(); return; }
+    document.body.classList.toggle('locked', !canWrite);
+    gate.hidden = canWrite;
+    if (!canWrite) { document.getElementById('gPass').value = ''; return; }
+    if (!started) { started = true; startData(); }
     render(); renderImgTools();
+    requestAnimationFrame(() => goTo(current, false));
   });
 
   // ---------- belge alanları ----------
@@ -981,11 +1013,17 @@ button { font: inherit; font-family: var(--sans); cursor: pointer; }
     });
   };
   render();
-  const slowTimer = setTimeout(() => { if (state === 'loading') { state = 'offline'; render(); } }, 10000);
-  db.collection('belgeler').onSnapshot((snap) => {
-    docs = snap.docs.map(s => ({ id: s.id, ...s.data() }));
-    clearTimeout(slowTimer); state = 'ready'; render();
-  }, () => { clearTimeout(slowTimer); state = 'offline'; render(); });
+  const startData = () => {
+    const slowTimer = setTimeout(() => { if (state === 'loading') { state = 'offline'; render(); } }, 10000);
+    db.collection('belgeler').onSnapshot((snap) => {
+      docs = snap.docs.map(s => ({ id: s.id, ...s.data() }));
+      clearTimeout(slowTimer); state = 'ready'; render();
+    }, () => { clearTimeout(slowTimer); state = 'offline'; render(); });
+    imgBoxes.forEach(box => db.collection('gorseller').doc(box.key).onSnapshot((s) => {
+      const v = s.exists ? s.data() : null;
+      if (v && v.src) box.show(v.src);
+    }, () => {}));
+  };
 
   // ---------- görseller (Firestore'da küçültülmüş JPEG) ----------
   const shrink = async (file, maxDim, limit = 850000) => {
@@ -1021,11 +1059,7 @@ button { font: inherit; font-family: var(--sans); cursor: pointer; }
       box.img.src = src; box.img.hidden = false; if (box.empty) box.empty.hidden = true; box.msg.hidden = true;
     };
     if (box.def) show(box.def);
-    db.collection('gorseller').doc(box.key).onSnapshot((s) => {
-      const v = s.exists ? s.data() : null;
-      if (v && v.src) show(v.src);
-      else if (!box.def) { box.msg.textContent = 'Görsel henüz eklenmedi.'; }
-    }, () => {});
+    box.show = show;
     el.addEventListener('dragover', (e) => { if (!canWrite) return; e.preventDefault(); el.classList.add('drop'); });
     el.addEventListener('dragleave', () => el.classList.remove('drop'));
     el.addEventListener('drop', (e) => {

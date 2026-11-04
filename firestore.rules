@@ -1,11 +1,10 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Herkes okur, yalnızca dosya sahibi (Mehmet Karadeniz) yazar.
+    // Yalnızca dosya sahibi (Mehmet Karadeniz) okur ve yazar.
     match /{document=**} {
-      allow read: if true;
-      allow write: if request.auth != null
-                   && request.auth.uid == 'i4jvgGhne2a5LLyZpvTlVZnraGJ3';
+      allow read, write: if request.auth != null
+                         && request.auth.uid == 'i4jvgGhne2a5LLyZpvTlVZnraGJ3';
     }
   }
 }
