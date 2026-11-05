@@ -26,18 +26,6 @@
   --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
   --sans: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --desk: #11161d; --paper: #1d242e; --ink: #e4e8ee; --text: #e4e8ee; --muted: #9aa5b4; --rule: #33404f;
-    --navy: #8fb3e0; --crimson: #ef7a82; --tint: #253040; --slot: #222b37;
-    --board: #22344d; --board-edge: #0f1b2b; --ring: #8a939f; --ring-hi: #c9d0d8; color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --desk: #11161d; --paper: #1d242e; --ink: #e4e8ee; --text: #e4e8ee; --muted: #9aa5b4; --rule: #33404f;
-  --navy: #8fb3e0; --crimson: #ef7a82; --tint: #253040; --slot: #222b37;
-  --board: #22344d; --board-edge: #0f1b2b; --ring: #8a939f; --ring-hi: #c9d0d8; color-scheme: dark;
-}
 
 *, *::before, *::after { box-sizing: border-box; }
 [hidden] { display: none !important; }
@@ -47,26 +35,8 @@ body { background: var(--desk); color: var(--text); font-family: var(--serif); }
 button { font: inherit; font-family: var(--sans); cursor: pointer; }
 :focus-visible { outline: 2px solid var(--crimson); outline-offset: 2px; }
 
-/* ---------- kitap / kaydırma (telefon) ---------- */
-.file { display: contents; }
-.board, .rings, .tabs, .stack { display: none; }
-.book {
-  position: relative; height: 100%; display: flex; align-items: center; gap: 24px;
-  overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; scroll-behavior: smooth;
-  padding-block: 14px 58px;
-  padding-left: max(16px, env(safe-area-inset-left, 0px));
-  padding-right: max(16px, env(safe-area-inset-right, 0px));
-  scrollbar-width: none;
-}
-.book::-webkit-scrollbar { display: none; }
-.book::before, .book::after { content: ""; flex: 0 0 calc(50vw - 40px); }
-@media (prefers-reduced-motion: reduce) { .book { scroll-behavior: auto; } }
-
 /* ---------- sayfa ---------- */
 .page {
-  flex: 0 0 auto; scroll-snap-align: center;
-  height: min(100%, calc((100vw - 32px) * 1.414));
-  aspect-ratio: 210 / 297; max-width: 100%;
   background: var(--paper); color: var(--text); border-radius: 2px;
   box-shadow: 0 1px 2px rgba(0,0,0,.12), 0 8px 24px rgba(20,30,45,.18);
   position: relative; overflow: hidden; line-height: 1.5;
@@ -211,39 +181,38 @@ body.locked .file, body.locked .bar, body.locked .book { visibility: hidden; }
 .gate { position: fixed; inset: 0; z-index: 30; display: flex; align-items: center; justify-content: center; background: var(--desk);
   padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
 
-/* ---------- masaüstü: halkalı klasör ---------- */
-@media (min-width: 900px) {
-  .file { display: block; position: fixed; z-index: 1; top: calc(22px + env(safe-area-inset-top, 0px)); bottom: 64px; left: 50%;
-    aspect-ratio: 210 / 297; transform: translateX(-50%); max-width: calc(100vw - 220px); }
-  .board { display: block; position: absolute; inset: -14px -18px -14px -64px; border-radius: 6px 12px 12px 6px;
-    background: linear-gradient(90deg, var(--board-edge) 0, var(--board-edge) 34px, rgba(255,255,255,.08) 35px, transparent 37px), var(--board);
-    box-shadow: 0 2px 4px rgba(0,0,0,.25), 0 22px 50px rgba(10,20,35,.35); }
-  .board::after { content: "Öğretmen Dosyası · 2026-2027"; position: absolute; left: 0; top: 0; bottom: 0; width: 34px;
-    writing-mode: vertical-rl; transform: rotate(180deg); text-align: center; font-family: var(--sans); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.55); }
-  .book { position: absolute; inset: 0; display: block; overflow: visible; padding: 0; scroll-snap-type: none; perspective: 4000px; }
-  .book::before, .book::after { display: none; }
-  .page { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; visibility: hidden; transform-origin: left center;
-    backface-visibility: hidden; box-shadow: none; }
-  .page.on { visibility: visible; z-index: 3; }
-  .page.under { visibility: visible; z-index: 2; }
-  .stack { display: block; position: absolute; inset: 0; z-index: 1; background: var(--paper); border-radius: 2px;
-    box-shadow: 2px 2px 0 -.5px var(--paper), 2px 2px 0 0 var(--rule), 4px 4px 0 -.5px var(--paper), 4px 4px 0 0 var(--rule), 6px 6px 0 -.5px var(--paper), 6px 6px 0 0 var(--rule), 0 1px 3px rgba(0,0,0,.2); }
-  .page.turn-out { visibility: visible; z-index: 4; animation: turnOut .55s cubic-bezier(.45,.05,.4,1) forwards; }
-  .page.turn-in { visibility: visible; z-index: 4; animation: turnIn .55s cubic-bezier(.45,.05,.4,1) forwards; }
-  @keyframes turnOut { from { transform: rotateY(0); } to { transform: rotateY(-90deg); opacity: .6; } }
-  @keyframes turnIn { from { transform: rotateY(-90deg); opacity: .6; } to { transform: rotateY(0); opacity: 1; } }
-  @media (prefers-reduced-motion: reduce) { .page.turn-out, .page.turn-in { animation-duration: 1ms; } }
-  .rings { display: block; position: absolute; inset: 0; z-index: 6; pointer-events: none; }
-  .rings i { position: absolute; left: -46px; width: calc(46px + 5.5%); height: 14px; margin-top: -7px; border-radius: 999px;
-    background: linear-gradient(180deg, var(--ring-hi), var(--ring) 45%, #7d8794 100%); box-shadow: 0 2px 3px rgba(0,0,0,.35); }
-  .rings i:nth-child(1) { top: 29.1%; } .rings i:nth-child(2) { top: 69.1%; }
-  .tabs { display: flex; flex-direction: column; gap: 4px; position: absolute; left: calc(100% + 2px); top: 2%; bottom: 2%; z-index: 0; }
-  .tabs button { flex: 1; min-height: 0; writing-mode: vertical-rl; border: 0; border-radius: 0 6px 6px 0; padding: 4px 0; width: 34px;
-    font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: .02em; text-align: center; overflow: hidden; white-space: nowrap;
-    color: #fff; background: var(--tab); opacity: .78; transform: translateX(-8px); transition: transform .2s, opacity .2s; box-shadow: 2px 1px 3px rgba(0,0,0,.2); }
-  .tabs button:hover { opacity: 1; transform: translateX(-4px); }
-  .tabs button.active { opacity: 1; transform: translateX(0); }
-}
+/* ---------- halkalı klasör (her ekranda) ---------- */
+:root { --bl: 64px; --tw: 34px; --tf: 11px; --sp: 34px; --rh: 14px; --tx: 8px; }
+@media (max-width: 899px) { :root { --bl: 30px; --tw: 19px; --tf: 7.5px; --sp: 15px; --rh: 8px; --tx: 4px; } }
+.file { position: fixed; z-index: 1; left: calc(50% + (var(--bl) - var(--tw)) / 2); top: calc(50% - 25px); transform: translate(-50%, -50%);
+  width: min(calc((100vh - 96px) * .7071), calc(100vw - var(--bl) - var(--tw) - 30px)); aspect-ratio: 210 / 297; }
+@supports (height: 100dvh) { .file { width: min(calc((100dvh - 96px) * .7071), calc(100vw - var(--bl) - var(--tw) - 30px)); } }
+.board { position: absolute; inset: calc(var(--rh) * -1) -14px calc(var(--rh) * -1) calc(var(--bl) * -1); border-radius: 6px 12px 12px 6px;
+  background: linear-gradient(90deg, var(--board-edge) 0, var(--board-edge) var(--sp), rgba(255,255,255,.08) calc(var(--sp) + 1px), transparent calc(var(--sp) + 3px)), var(--board);
+  box-shadow: 0 2px 4px rgba(0,0,0,.25), 0 22px 50px rgba(10,20,35,.35); }
+.board::after { content: "Öğretmen Dosyası · 2026-2027"; position: absolute; left: 0; top: 0; bottom: 0; width: var(--sp);
+  writing-mode: vertical-rl; transform: rotate(180deg); text-align: center; font-family: var(--sans); font-size: calc(var(--tf) + 0px); letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.55); }
+.book { position: absolute; inset: 0; perspective: 4000px; touch-action: pan-y; }
+.page { position: absolute; inset: 0; width: 100%; height: 100%; visibility: hidden; transform-origin: left center; backface-visibility: hidden; box-shadow: none; }
+.page.on { visibility: visible; z-index: 3; }
+.page.under { visibility: visible; z-index: 2; }
+.stack { position: absolute; inset: 0; z-index: 1; background: var(--paper); border-radius: 2px;
+  box-shadow: 2px 2px 0 -.5px var(--paper), 2px 2px 0 0 var(--rule), 4px 4px 0 -.5px var(--paper), 4px 4px 0 0 var(--rule), 6px 6px 0 -.5px var(--paper), 6px 6px 0 0 var(--rule), 0 1px 3px rgba(0,0,0,.2); }
+.page.turn-out { visibility: visible; z-index: 4; animation: turnOut .5s cubic-bezier(.45,.05,.4,1) forwards; }
+.page.turn-in { visibility: visible; z-index: 4; animation: turnIn .5s cubic-bezier(.45,.05,.4,1) forwards; }
+@keyframes turnOut { from { transform: rotateY(0); } to { transform: rotateY(-90deg); opacity: .6; } }
+@keyframes turnIn { from { transform: rotateY(-90deg); opacity: .6; } to { transform: rotateY(0); opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .page.turn-out, .page.turn-in { animation-duration: 1ms; } }
+.rings { position: absolute; inset: 0; z-index: 6; pointer-events: none; }
+.rings i { position: absolute; left: calc((var(--bl) - 18px) * -1); width: calc(var(--bl) - 18px + 5.5%); height: var(--rh); margin-top: calc(var(--rh) / -2); border-radius: 999px;
+  background: linear-gradient(180deg, var(--ring-hi), var(--ring) 45%, #7d8794 100%); box-shadow: 0 2px 3px rgba(0,0,0,.35); }
+.rings i:nth-child(1) { top: 29.1%; } .rings i:nth-child(2) { top: 69.1%; }
+.tabs { display: flex; flex-direction: column; gap: 3px; position: absolute; left: calc(100% + 2px); top: 2%; bottom: 2%; z-index: 0; }
+.tabs button { flex: 1; min-height: 0; writing-mode: vertical-rl; border: 0; border-radius: 0 5px 5px 0; padding: 3px 0; width: var(--tw);
+  font-family: var(--sans); font-size: var(--tf); font-weight: 600; letter-spacing: .02em; text-align: center; overflow: hidden; white-space: nowrap;
+  color: #fff; background: var(--tab); opacity: .8; transform: translateX(calc(var(--tx) * -1)); transition: transform .2s, opacity .2s; box-shadow: 2px 1px 3px rgba(0,0,0,.2); }
+.tabs button:hover { opacity: 1; transform: translateX(calc(var(--tx) * -.5)); }
+.tabs button.active { opacity: 1; transform: translateX(0); }
 </style>
 </head>
 <body class="locked">
@@ -636,7 +605,7 @@ body.locked .file, body.locked .bar, body.locked .book { visibility: hidden; }
       { id: 'sertifikalar', label: 'Hizmet İçi Eğitim Belgeleri ve Sertifikalar' },
       { id: 'resmi-yazilar', label: 'Resmî Yazışmalar' } ] }
   ];
-  const VERSION = '1.5'; // her değişiklikte artır: 1.5, 1.6 ...
+  const VERSION = '1.6'; // her değişiklikte artır: 1.5, 1.6 ...
   const TAB = ['Resmî', 'Takvim', 'Program', 'Planlar', 'Kurullar', 'Ölçme', 'Öğrenci', 'BT Sınıfı', 'Etik', 'Etkinlik', 'YOS', 'Kulüp', 'İdari'];
   const TABC = ['#b1222d', '#2f6b4f', '#1f5f8b', '#b0742a', '#5a4b8c', '#8a3b5c', '#2d6e6e', '#5e6877', '#9a4a1f', '#3f6a2a', '#1f3a5f', '#7a5a1e', '#4a5568'];
     document.querySelectorAll('.ver').forEach(e => { e.textContent = 'v' + VERSION; });
@@ -717,7 +686,7 @@ body.locked .file, body.locked .bar, body.locked .book { visibility: hidden; }
 
   // ---------- gezinme ----------
   const prev = document.getElementById('prev'), next = document.getElementById('next'), count = document.getElementById('count');
-  const desk = window.matchMedia('(min-width: 900px)');
+  const desk = { matches: true };
   let current = 0, busy = false;
   const wakeFrames = (i) => {
     for (let k = i - 1; k <= i + 1; k++) {
@@ -756,7 +725,14 @@ body.locked .file, body.locked .bar, body.locked .book { visibility: hidden; }
     return best;
   };
   let t;
-  book.addEventListener('scroll', () => { if (desk.matches) return; clearTimeout(t); t = setTimeout(() => setCurrent(nearest()), 80); }, { passive: true });
+  // telefonda parmakla çevirme
+  let tx = null, ty = null;
+  book.addEventListener('touchstart', (e) => { if (e.touches.length !== 1) { tx = null; return; } tx = e.touches[0].clientX; ty = e.touches[0].clientY; }, { passive: true });
+  book.addEventListener('touchend', (e) => {
+    if (tx === null) return;
+    const dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty; tx = null;
+    if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.3) goTo(current + (dx < 0 ? 1 : -1));
+  }, { passive: true });
   prev.addEventListener('click', () => goTo(current - 1));
   next.addEventListener('click', () => goTo(current + 1));
   document.getElementById('tocBtn').addEventListener('click', () => goTo(1));
@@ -789,7 +765,6 @@ body.locked .file, body.locked .bar, body.locked .book { visibility: hidden; }
   const fromHash = () => { const i = pages.findIndex(p => '#' + p.id === location.hash); if (i >= 0) goTo(i, false); };
   window.addEventListener('hashchange', fromHash);
   window.addEventListener('resize', () => goTo(current, false));
-  desk.addEventListener('change', () => { pages.forEach(p => p.classList.remove('on')); pages[current].classList.add('on'); goTo(current, false); });
   setCurrent(0);
   requestAnimationFrame(() => { fromHash(); if (!location.hash) goTo(0, false); });
 
