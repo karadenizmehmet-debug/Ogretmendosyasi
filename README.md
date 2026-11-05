@@ -16,6 +16,7 @@ Mehmet Karadeniz, 2026-2027
 Firebase Storage kullanılmaz (ücretsiz Spark planında yok).
 
 ## Sürümler
+- **v1.5** — claude.ai'daki ilk sürümün tasarımı: lacivert klasör, renkli bölüm ayraçları, sade beyaz sayfalar.
 - **v1.4** — Gerçek A4 düzeni: sayfa içi kaydırma yok; belgeler kendi sayfasında; belge ekleme penceresi.
 - **v1.3** — Yeni tasarım: 13 bölüm, numaralı bölüm kapakları, otomatik işaretlenen kutucuklar, Türk Bayrağı sayfası.
 - **v1.2** — Drive belgeleri sayfa içinde önizlenir.
