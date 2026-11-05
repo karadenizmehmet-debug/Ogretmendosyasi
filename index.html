@@ -77,6 +77,7 @@ td.blank { height: 2.1em; }
 .cover dl { display: grid; grid-template-columns: auto auto; gap: .35em 1em; text-align: left; font-size: .95em; margin: 0; }
 .cover dt { font-family: var(--sans); font-size: .8em; color: var(--muted); align-self: center; }
 .cover dd { margin: 0; }
+.cover .cv-ver { margin-top: 2.2em; font-family: var(--sans); font-size: .78em; letter-spacing: .1em; color: var(--muted); border: 1px solid var(--rule); border-radius: 999px; padding: .2em .9em; }
 
 /* ---------- içindekiler ---------- */
 .toc { list-style: none; padding: 0; margin: 0; font-family: var(--sans); }
@@ -246,6 +247,7 @@ body.locked .file, body.locked .bar, body.locked .book { visibility: hidden; }
       <dt>Branş</dt><dd>Bilişim Teknolojileri ve Yazılım</dd>
       <dt>Dersler</dt><dd>5. ve 6. sınıf Bilişim Teknolojileri ve Yazılım<br>7. sınıf Yapay Zekâ Uygulamaları (seçmeli)</dd>
     </dl>
+    <div class="cv-ver">Sürüm <span class="ver"></span></div>
   </div>
 </section>
 
@@ -605,7 +607,7 @@ body.locked .file, body.locked .bar, body.locked .book { visibility: hidden; }
       { id: 'sertifikalar', label: 'Hizmet İçi Eğitim Belgeleri ve Sertifikalar' },
       { id: 'resmi-yazilar', label: 'Resmî Yazışmalar' } ] }
   ];
-  const VERSION = '1.6'; // her değişiklikte artır: 1.5, 1.6 ...
+  const VERSION = '1.7'; // her değişiklikte artır: 1.5, 1.6 ...
   const TAB = ['Resmî', 'Takvim', 'Program', 'Planlar', 'Kurullar', 'Ölçme', 'Öğrenci', 'BT Sınıfı', 'Etik', 'Etkinlik', 'YOS', 'Kulüp', 'İdari'];
   const TABC = ['#b1222d', '#2f6b4f', '#1f5f8b', '#b0742a', '#5a4b8c', '#8a3b5c', '#2d6e6e', '#5e6877', '#9a4a1f', '#3f6a2a', '#1f3a5f', '#7a5a1e', '#4a5568'];
     document.querySelectorAll('.ver').forEach(e => { e.textContent = 'v' + VERSION; });

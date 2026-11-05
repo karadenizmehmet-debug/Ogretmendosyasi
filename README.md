@@ -16,6 +16,7 @@ Mehmet Karadeniz, 2026-2027
 Firebase Storage kullanılmaz (ücretsiz Spark planında yok).
 
 ## Sürümler
+- **v1.7** — Sürüm numarası kapakta görünür.
 - **v1.6** — Telefonda da bilgisayardaki gibi halkalı klasör görünümü; parmakla sayfa çevirme; her zaman açık renkli kâğıt.
 - **v1.5** — claude.ai'daki ilk sürümün tasarımı: lacivert klasör, renkli bölüm ayraçları, sade beyaz sayfalar.
 - **v1.4** — Gerçek A4 düzeni: sayfa içi kaydırma yok; belgeler kendi sayfasında; belge ekleme penceresi.
