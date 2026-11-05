@@ -3,6 +3,10 @@
 Karahüyük Ali Akkanat Ortaokulu, Bilişim Teknolojileri ve Yazılım öğretmen dosyası.
 Mehmet Karadeniz, 2026-2027
 
+## Adresler
+- https://ogretmendosyam.web.app (okulda bu açılır)
+- https://karadenizmehmet-debug.github.io/Ogretmendosyasi/
+
 ## Yapı
 - `index.html` — dosyanın tamamı (tek sayfa, sayfa sayfa çevrilir).
 - `gorseller/` — varsayılan görseller (Atatürk portresi, çalışma takvimi).
@@ -16,6 +20,7 @@ Mehmet Karadeniz, 2026-2027
 Firebase Storage kullanılmaz (ücretsiz Spark planında yok).
 
 ## Sürümler
+- **v1.9** — Firebase Hosting'e otomatik yayın (ogretmendosyam.web.app); okul ağında github.io açılmadığı için.
 - **v1.8** — Telefonda iki parmakla yakınlaştırma; yakınken kaydırma sayfa çevirmez.
 - **v1.7** — Sürüm numarası kapakta görünür.
 - **v1.6** — Telefonda da bilgisayardaki gibi halkalı klasör görünümü; parmakla sayfa çevirme; her zaman açık renkli kâğıt.
