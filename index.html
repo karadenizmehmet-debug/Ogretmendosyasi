@@ -219,8 +219,8 @@ body.locked .file, body.locked .bar, body.locked .book { visibility: hidden; }
 <body class="locked">
 <div class="gate" id="gate">
   <form id="gateForm">
-    <p class="gt">Öğretmen Dosyası</p>
-    <p class="gs">Karahüyük Ali Akkanat Ortaokulu · 2026-2027 · <span class="ver"></span><br>Dosyayı görmek için giriş yapın.</p>
+    <p class="gt">Öğretmen Dosyası <span class="ver" style="font-size:.55em;opacity:.6;font-weight:600"></span></p>
+    <p class="gs">Karahüyük Ali Akkanat Ortaokulu · 2026-2027<br>Dosyayı görmek için giriş yapın.</p>
     <input id="gMail" type="email" placeholder="E-posta" autocomplete="username" required>
     <input id="gPass" type="password" placeholder="Şifre" autocomplete="current-password" required>
     <p class="err" id="gErr" hidden></p>
@@ -607,7 +607,7 @@ body.locked .file, body.locked .bar, body.locked .book { visibility: hidden; }
       { id: 'sertifikalar', label: 'Hizmet İçi Eğitim Belgeleri ve Sertifikalar' },
       { id: 'resmi-yazilar', label: 'Resmî Yazışmalar' } ] }
   ];
-  const VERSION = '1.9'; // düzeltme +0.0.1 (1.9.1), yeni özellik +0.1 (1.10)
+  const VERSION = '1.9.1'; // düzeltme +0.0.1 (1.9.1), yeni özellik +0.1 (1.10)
   const TAB = ['Resmî', 'Takvim', 'Program', 'Planlar', 'Kurullar', 'Ölçme', 'Öğrenci', 'BT Sınıfı', 'Etik', 'Etkinlik', 'YOS', 'Kulüp', 'İdari'];
   const TABC = ['#b1222d', '#2f6b4f', '#1f5f8b', '#b0742a', '#5a4b8c', '#8a3b5c', '#2d6e6e', '#5e6877', '#9a4a1f', '#3f6a2a', '#1f3a5f', '#7a5a1e', '#4a5568'];
     document.querySelectorAll('.ver').forEach(e => { e.textContent = 'v' + VERSION; });
