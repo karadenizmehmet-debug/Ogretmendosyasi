@@ -20,6 +20,7 @@ Mehmet Karadeniz, 2026-2027
 Firebase Storage kullanılmaz (ücretsiz Spark planında yok).
 
 ## Sürümler
+- **v1.10** — Koyu / normal mod düğmesi (alt çubukta ve giriş ekranında); kâğıt her zaman açık renkli kalır.
 - **v1.9** — Firebase Hosting'e otomatik yayın (ogretmendosyam.web.app); okul ağında github.io açılmadığı için.
 - **v1.8** — Telefonda iki parmakla yakınlaştırma; yakınken kaydırma sayfa çevirmez.
 - **v1.7** — Sürüm numarası kapakta görünür.
