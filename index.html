@@ -188,8 +188,10 @@ html[data-theme="dark"] { color-scheme: dark; --desk: #11161d; --paper: #1b222c;
 html[data-theme="dark"] .page, html[data-theme="dark"] .stack { --paper: #fdfdfb; --ink: #1c2430; --text: #1c2430; --muted: #5e6877; --rule: #d8dde4; --navy: #1f3a5f; --crimson: #b1222d; --tint: #eef2f7; --slot: #f6f8fb; }
 html[data-theme="dark"] .bar button, html[data-theme="dark"] .bar .count, html[data-theme="dark"] .bar .vtag { box-shadow: 0 1px 3px rgba(0,0,0,.5); }
 html[data-theme="dark"] .modal { background: rgba(0,0,0,.65); }
-.temaBtn { font-size: 15px; line-height: 1; }
-.gate .temaBtn { position: absolute; top: max(12px, env(safe-area-inset-top, 0px)); right: max(12px, env(safe-area-inset-right, 0px)); border: 1px solid var(--rule); background: var(--paper); color: var(--ink); border-radius: 999px; height: 34px; padding: 0 14px; }
+.temaBtn, .paylasBtn { font-size: 15px; line-height: 1; }
+.paylasBtn svg { width: 1.15em; height: 1.15em; display: block; margin: 0 auto; }
+.gate .gtools { position: absolute; top: max(12px, env(safe-area-inset-top, 0px)); right: max(12px, env(safe-area-inset-right, 0px)); display: flex; gap: 8px; }
+.gate .temaBtn, .gate .paylasBtn { border: 1px solid var(--rule); background: var(--paper); color: var(--ink); border-radius: 999px; height: 34px; padding: 0 14px; }
 
 /* ---------- halkalı klasör (her ekranda) ---------- */
 :root { --bl: 64px; --tw: 34px; --tf: 11px; --sp: 34px; --rh: 14px; --tx: 8px; }
@@ -227,7 +229,7 @@ html[data-theme="dark"] .modal { background: rgba(0,0,0,.65); }
 </head>
 <body class="locked">
 <div class="gate" id="gate">
-  <button type="button" class="temaBtn"></button>
+  <div class="gtools"><button type="button" class="paylasBtn"></button><button type="button" class="temaBtn"></button></div>
   <form id="gateForm">
     <p class="gt">Öğretmen Dosyası <span class="ver" style="font-size:.55em;opacity:.6;font-weight:600"></span></p>
     <p class="gs">Karahüyük Ali Akkanat Ortaokulu · 2026-2027<br>Dosyayı görmek için giriş yapın.</p>
@@ -476,6 +478,7 @@ html[data-theme="dark"] .modal { background: rgba(0,0,0,.65); }
   <button id="prev" aria-label="Önceki sayfa">‹<span class="wide"> Önceki</span></button>
   <button id="tocBtn">İçindekiler</button>
   <button id="authBtn">Çıkış</button>
+  <button type="button" class="paylasBtn"></button>
   <button type="button" class="temaBtn"></button>
   <span class="count" id="count">1 / 1</span>
   <span class="vtag ver"></span>
@@ -618,7 +621,7 @@ html[data-theme="dark"] .modal { background: rgba(0,0,0,.65); }
       { id: 'sertifikalar', label: 'Hizmet İçi Eğitim Belgeleri ve Sertifikalar' },
       { id: 'resmi-yazilar', label: 'Resmî Yazışmalar' } ] }
   ];
-  const VERSION = '1.10'; // düzeltme +0.0.1 (1.9.1), yeni özellik +0.1 (1.10)
+  const VERSION = '1.11'; // düzeltme +0.0.1 (1.9.1), yeni özellik +0.1 (1.10)
   const TAB = ['Resmî', 'Takvim', 'Program', 'Planlar', 'Kurullar', 'Ölçme', 'Öğrenci', 'BT Sınıfı', 'Etik', 'Etkinlik', 'YOS', 'Kulüp', 'İdari'];
   const TABC = ['#b1222d', '#2f6b4f', '#1f5f8b', '#b0742a', '#5a4b8c', '#8a3b5c', '#2d6e6e', '#5e6877', '#9a4a1f', '#3f6a2a', '#1f3a5f', '#7a5a1e', '#4a5568'];
     document.querySelectorAll('.ver').forEach(e => { e.textContent = 'v' + VERSION; });
@@ -1039,6 +1042,29 @@ html[data-theme="dark"] .modal { background: rgba(0,0,0,.65); }
     imgBoxes.forEach(b => { b.tools.hidden = false; });
     requestAnimationFrame(() => { build(); if (!started) { started = true; startData(); } });
   });
+})();
+</script>
+<script>
+// Adres paylaş düğmesi: önce sistem paylaşımı, olmazsa adresi panoya kopyalar. Mehmet Karadeniz, 2026-2027
+(function () {
+  var SH = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 10.5l6.8-4M8.6 13.5l6.8 4"/></svg>';
+  var OK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>';
+  function adres() { return location.href.split(/[?#]/)[0]; }
+  function kopyala(u) {
+    try { var t = document.createElement("textarea"); t.value = u; t.style.cssText = "position:fixed;opacity:0;top:0;left:0"; document.body.appendChild(t); t.select(); var ok = document.execCommand("copy"); document.body.removeChild(t); return ok; } catch (e) { return false; }
+  }
+  function tamam(b) { b.innerHTML = OK; b.title = "Adres kopyalandı"; setTimeout(function () { b.innerHTML = SH; b.title = "Adresi paylaş"; }, 1800); }
+  function paylas(b) {
+    var u = adres();
+    if (navigator.share) { navigator.share({ title: document.title, url: u }).catch(function () {}); return; }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(u).then(function () { tamam(b); }, function () { if (kopyala(u)) tamam(b); });
+    else if (kopyala(u)) tamam(b);
+  }
+  var bs = document.querySelectorAll(".paylasBtn");
+  for (var i = 0; i < bs.length; i++) {
+    bs[i].innerHTML = SH; bs[i].title = "Adresi paylaş"; bs[i].setAttribute("aria-label", "Adresi paylaş");
+    bs[i].addEventListener("click", function () { paylas(this); });
+  }
 })();
 </script>
 </body>
